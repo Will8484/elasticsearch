@@ -109,7 +109,7 @@ public class JavaModulePrecommitTask extends PrecommitTask {
         String mVersion = mref.descriptor()
             .rawVersion()
             .orElseThrow(() -> new GradleException("no version found in module " + mref.descriptor().name()));
-        if (mVersion.equals(expectedVersion) == false) {
+        if (expectedVersion.equals(mVersion) == false) {
             throw new GradleException("Expected version [" + expectedVersion + "], in " + mref.descriptor());
         }
     }

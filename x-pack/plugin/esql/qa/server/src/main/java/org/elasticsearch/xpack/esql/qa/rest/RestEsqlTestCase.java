@@ -417,10 +417,10 @@ public class RestEsqlTestCase extends ESRestTestCase {
                 case "tsv" -> sb.append('\t');
             }
             sb.append(i);
-            if (format.equals("txt")) {
+            if ("txt".equals(format)) {
                 sb.append(" ".repeat(15 - iLen));
             }
-            sb.append(format.equals("csv") ? "\r\n" : "\n");
+            sb.append("csv".equals(format) ? "\r\n" : "\n");
         }
         return sb.toString();
     }

@@ -100,7 +100,7 @@ public class NerConfig implements NlpConfig {
                     badLabels
                 );
             }
-            if (this.classificationLabels.stream().noneMatch(l -> l.toUpperCase(Locale.ROOT).equals("O"))) {
+            if (this.classificationLabels.stream().noneMatch(l -> "O".equals(l.toUpperCase(Locale.ROOT)))) {
                 throw ExceptionsHelper.badRequestException(
                     "[{}] only allows IOB tokenization tagging for classification labels; missing outside label [O]",
                     NAME

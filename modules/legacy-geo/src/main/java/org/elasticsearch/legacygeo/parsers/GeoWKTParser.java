@@ -181,7 +181,7 @@ public class GeoWKTParser {
     private static MultiPointBuilder parseMultiPoint(StreamTokenizer stream, final boolean ignoreZValue, final boolean coerce)
         throws IOException, ElasticsearchParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return new MultiPointBuilder();
         }
         return new MultiPointBuilder(parseCoordinateList(stream, ignoreZValue, coerce));
@@ -190,7 +190,7 @@ public class GeoWKTParser {
     private static LineStringBuilder parseLine(StreamTokenizer stream, final boolean ignoreZValue, final boolean coerce) throws IOException,
         ElasticsearchParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return null;
         }
         return new LineStringBuilder(parseCoordinateList(stream, ignoreZValue, coerce));
@@ -201,7 +201,7 @@ public class GeoWKTParser {
     private static LineStringBuilder parseLinearRing(StreamTokenizer stream, final boolean ignoreZValue, final boolean coerce)
         throws IOException, ElasticsearchParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return null;
         }
         List<Coordinate> coordinates = parseCoordinateList(stream, ignoreZValue, coerce);
@@ -224,7 +224,7 @@ public class GeoWKTParser {
     private static MultiLineStringBuilder parseMultiLine(StreamTokenizer stream, final boolean ignoreZValue, final boolean coerce)
         throws IOException, ElasticsearchParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return new MultiLineStringBuilder();
         }
         MultiLineStringBuilder builder = new MultiLineStringBuilder();
@@ -281,7 +281,7 @@ public class GeoWKTParser {
         switch (stream.nextToken()) {
             case StreamTokenizer.TT_WORD:
                 final String word = stream.sval;
-                return word.equalsIgnoreCase(EMPTY) ? EMPTY : word;
+                return EMPTY.equalsIgnoreCase(word) ? EMPTY : word;
             case '(':
                 return LPAREN;
             case ')':
@@ -325,7 +325,7 @@ public class GeoWKTParser {
 
     private static String nextEmptyOrOpen(StreamTokenizer stream) throws IOException, ElasticsearchParseException {
         final String next = nextWord(stream);
-        if (next.equals(EMPTY) || next.equals(LPAREN)) {
+        if (EMPTY.equals(next) || LPAREN.equals(next)) {
             return next;
         }
         throw new ElasticsearchParseException(
@@ -350,7 +350,7 @@ public class GeoWKTParser {
 
     private static String nextCloserOrComma(StreamTokenizer stream) throws IOException, ElasticsearchParseException {
         String token = nextWord(stream);
-        if (token.equals(COMMA) || token.equals(RPAREN)) {
+        if (COMMA.equals(token) || RPAREN.equals(token)) {
             return token;
         }
         throw new ElasticsearchParseException(

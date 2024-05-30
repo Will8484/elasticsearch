@@ -132,7 +132,7 @@ public class NoticeTask extends DefaultTask {
 
         // Find any source files with "@notice" annotated license header
         for (File sourceFile : sources.getFiles()) {
-            boolean isPackageInfo = sourceFile.getName().equals("package-info.java");
+            boolean isPackageInfo = "package-info.java".equals(sourceFile.getName());
             boolean foundNotice = false;
             boolean inNotice = false;
             StringBuilder header = new StringBuilder();

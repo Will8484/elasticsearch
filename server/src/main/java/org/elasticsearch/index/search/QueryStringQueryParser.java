@@ -660,7 +660,7 @@ public class QueryStringQueryParser extends QueryParser {
     @Override
     protected Query getWildcardQuery(String field, String termStr) throws ParseException {
         String actualField = field != null ? field : this.field;
-        if (termStr.equals("*") && actualField != null) {
+        if ("*".equals(termStr) && actualField != null) {
             if (Regex.isMatchAllPattern(actualField)) {
                 return newMatchAllDocsQuery();
             }

@@ -320,7 +320,7 @@ public class WellKnownText {
 
     private static MultiPoint parseMultiPoint(StreamTokenizer stream) throws IOException, ParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return MultiPoint.EMPTY;
         }
         ArrayList<Double> lats = new ArrayList<>();
@@ -340,7 +340,7 @@ public class WellKnownText {
 
     private static Line parseLine(StreamTokenizer stream) throws IOException, ParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return Line.EMPTY;
         }
         ArrayList<Double> lats = new ArrayList<>();
@@ -356,7 +356,7 @@ public class WellKnownText {
 
     private static MultiLine parseMultiLine(StreamTokenizer stream) throws IOException, ParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return MultiLine.EMPTY;
         }
         ArrayList<Line> lines = new ArrayList<>();
@@ -429,7 +429,7 @@ public class WellKnownText {
 
     private static MultiPolygon parseMultiPolygon(StreamTokenizer stream, boolean coerce) throws IOException, ParseException {
         String token = nextEmptyOrOpen(stream);
-        if (token.equals(EMPTY)) {
+        if (EMPTY.equals(token)) {
             return MultiPolygon.EMPTY;
         }
         ArrayList<Polygon> polygons = new ArrayList<>();
@@ -479,7 +479,7 @@ public class WellKnownText {
         switch (stream.nextToken()) {
             case StreamTokenizer.TT_WORD:
                 final String word = stream.sval;
-                return word.equalsIgnoreCase(EMPTY) ? EMPTY : word;
+                return EMPTY.equalsIgnoreCase(word) ? EMPTY : word;
             case '(':
                 return LPAREN;
             case ')':
@@ -523,7 +523,7 @@ public class WellKnownText {
 
     private static String nextEmptyOrOpen(StreamTokenizer stream) throws IOException, ParseException {
         final String next = nextWord(stream);
-        if (next.equals(EMPTY) || next.equals(LPAREN)) {
+        if (EMPTY.equals(next) || LPAREN.equals(next)) {
             return next;
         }
         throw new ParseException("expected " + EMPTY + " or " + LPAREN + " but found: " + tokenString(stream), stream.lineno());
@@ -552,7 +552,7 @@ public class WellKnownText {
 
     private static String nextCloserOrComma(StreamTokenizer stream) throws IOException, ParseException {
         String token = nextWord(stream);
-        if (token.equals(COMMA) || token.equals(RPAREN)) {
+        if (COMMA.equals(token) || RPAREN.equals(token)) {
             return token;
         }
         throw new ParseException("expected " + COMMA + " or " + RPAREN + " but found: " + tokenString(stream), stream.lineno());

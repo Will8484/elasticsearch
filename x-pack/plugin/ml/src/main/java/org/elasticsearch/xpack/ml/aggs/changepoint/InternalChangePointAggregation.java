@@ -77,16 +77,16 @@ public class InternalChangePointAggregation extends InternalAggregation {
     public Object getProperty(List<String> path) {
         if (path.size() == 1) {
             String property = path.get(0);
-            if (property.equals("p_value")) {
+            if ("p_value".equals(property)) {
                 return changeType.pValue();
             }
-            if (property.equals("type")) {
+            if ("type".equals(property)) {
                 return changeType.getName();
             }
-            if (property.equals("change_point")) {
+            if ("change_point".equals(property)) {
                 return changeType.changePoint();
             }
-        } else if (path.size() > 1 && path.get(0).equals("bucket") && bucket != null) {
+        } else if (path.size() > 1 && "bucket".equals(path.get(0)) && bucket != null) {
             return bucket.getProperty(name, path.subList(1, path.size()));
         }
         return null;

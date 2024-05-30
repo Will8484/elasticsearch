@@ -394,7 +394,7 @@ public class SamlIdentityProviderBuilder {
             throw new ElasticsearchSecurityException("There is no private key available for this credential");
         }
         final String keyType = privateKey.getAlgorithm();
-        if (keyType.equals("RSA") == false && keyType.equals("EC") == false) {
+        if ("RSA".equals(keyType) == false && "EC".equals(keyType) == false) {
             throw new ElasticsearchSecurityException(
                 "The private key uses unsupported key algorithm type [" + keyType + "], only RSA and EC are supported"
             );

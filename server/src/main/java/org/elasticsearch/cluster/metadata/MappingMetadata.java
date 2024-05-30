@@ -97,7 +97,7 @@ public class MappingMetadata implements SimpleDiffable<MappingMetadata> {
             for (Map.Entry<String, Object> entry : routingNode.entrySet()) {
                 String fieldName = entry.getKey();
                 Object fieldNode = entry.getValue();
-                if (fieldName.equals("required")) {
+                if ("required".equals(fieldName)) {
                     try {
                         required = nodeBooleanValue(fieldNode);
                     } catch (IllegalArgumentException ex) {

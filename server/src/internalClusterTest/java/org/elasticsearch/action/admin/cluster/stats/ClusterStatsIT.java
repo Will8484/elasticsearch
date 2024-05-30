@@ -291,11 +291,11 @@ public class ClusterStatsIT extends ESIntegTestCase {
         assertThat(response.getIndicesStats().getMappings().getFieldTypeStats().size(), equalTo(3));
         List<FieldStats> stats = response.getIndicesStats().getMappings().getFieldTypeStats();
         for (FieldStats stat : stats) {
-            if (stat.getName().equals("integer")) {
+            if ("integer".equals(stat.getName())) {
                 assertThat(stat.getCount(), greaterThanOrEqualTo(1));
-            } else if (stat.getName().equals("keyword")) {
+            } else if ("keyword".equals(stat.getName())) {
                 assertThat(stat.getCount(), greaterThanOrEqualTo(3));
-            } else if (stat.getName().equals("object")) {
+            } else if ("object".equals(stat.getName())) {
                 assertThat(stat.getCount(), greaterThanOrEqualTo(1));
             }
         }

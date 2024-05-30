@@ -30,7 +30,7 @@ public class AutoExpandReplicasIT extends ESIntegTestCase {
                 .build()
         );
 
-        final int initialReplicas = autoExpandValue.equals("0-1") ? 1 : internalCluster().numDataNodes() - 1;
+        final int initialReplicas = "0-1".equals(autoExpandValue) ? 1 : internalCluster().numDataNodes() - 1;
 
         assertBusy(() -> {
             assertThat(

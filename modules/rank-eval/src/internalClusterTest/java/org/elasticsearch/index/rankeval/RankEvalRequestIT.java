@@ -104,7 +104,7 @@ public class RankEvalRequestIT extends ESIntegTestCase {
                 assertEquals(6, hitsAndRatings.size());
                 for (RatedSearchHit hit : hitsAndRatings) {
                     String id = hit.getSearchHit().getId();
-                    if (id.equals("1") || id.equals("6")) {
+                    if ("1".equals(id) || "6".equals(id)) {
                         assertFalse(hit.getRating().isPresent());
                     } else {
                         assertEquals(RELEVANT_RATING_1, hit.getRating().getAsInt());
@@ -117,7 +117,7 @@ public class RankEvalRequestIT extends ESIntegTestCase {
                 assertEquals(6, hitsAndRatings.size());
                 for (RatedSearchHit hit : hitsAndRatings) {
                     String id = hit.getSearchHit().getId();
-                    if (id.equals("1")) {
+                    if ("1".equals(id)) {
                         assertEquals(RELEVANT_RATING_1, hit.getRating().getAsInt());
                     } else {
                         assertFalse(hit.getRating().isPresent());

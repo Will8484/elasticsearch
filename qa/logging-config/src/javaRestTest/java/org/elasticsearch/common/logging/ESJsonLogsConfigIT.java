@@ -33,7 +33,7 @@ public class ESJsonLogsConfigIT extends JsonLogsIntegTestCase {
     protected BufferedReader openReader(Path logFile) {
         assumeFalse(
             "Skipping test because it is being run against an external cluster.",
-            logFile.getFileName().toString().equals("--external--")
+            "--external--".equals(logFile.getFileName().toString())
         );
 
         return AccessController.doPrivileged((PrivilegedAction<BufferedReader>) () -> {

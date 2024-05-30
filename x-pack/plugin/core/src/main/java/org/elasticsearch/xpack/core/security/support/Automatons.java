@@ -211,7 +211,7 @@ public final class Automatons {
             }
             String regex = pattern.substring(1, pattern.length() - 1);
             return new RegExp(regex).toAutomaton();
-        } else if (pattern.equals("*")) {
+        } else if ("*".equals(pattern)) {
             return MATCH_ALL;
         } else {
             return wildcard(pattern);

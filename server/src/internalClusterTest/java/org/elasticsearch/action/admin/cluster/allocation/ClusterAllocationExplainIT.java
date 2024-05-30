@@ -238,7 +238,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
                 assertEquals(nodeHoldingPrimary ? 1 : 0, result.getCanAllocateDecision().getDecisions().size());
             }
             for (Decision d : result.getCanAllocateDecision().getDecisions()) {
-                if (d.label().equals("same_shard") && nodeHoldingPrimary) {
+                if ("same_shard".equals(d.label()) && nodeHoldingPrimary) {
                     assertEquals(Decision.Type.NO, d.type());
                     assertThat(d.getExplanation(), startsWith("a copy of this shard is already allocated to this node ["));
                 } else {
@@ -356,10 +356,10 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
                 assertEquals(1, result.getCanAllocateDecision().getDecisions().size());
             }
             for (Decision d : result.getCanAllocateDecision().getDecisions()) {
-                if (d.label().equals("same_shard") && nodeHoldingPrimary) {
+                if ("same_shard".equals(d.label()) && nodeHoldingPrimary) {
                     assertEquals(Decision.Type.NO, d.type());
                     assertThat(d.getExplanation(), startsWith("a copy of this shard is already allocated to this node ["));
-                } else if (d.label().equals("filter") && nodeHoldingPrimary == false) {
+                } else if ("filter".equals(d.label()) && nodeHoldingPrimary == false) {
                     assertEquals(Decision.Type.NO, d.type());
                     assertEquals(Strings.format("""
                         node does not match index setting [index.routing.allocation.include] \
@@ -386,7 +386,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             parser.nextToken();
             assertEquals("allocate_explanation", parser.currentName());
             parser.nextToken();
-            if (allocationDecision.equals("awaiting_info")) {
+            if ("awaiting_info".equals(allocationDecision)) {
                 assertEquals(Explanations.Allocation.AWAITING_INFO, parser.text());
             } else {
                 assertEquals(Explanations.Allocation.ALL_NODES_FORBIDDEN, parser.text());
@@ -462,7 +462,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
                 assertEquals(1, result.getCanAllocateDecision().getDecisions().size());
             }
             for (Decision d : result.getCanAllocateDecision().getDecisions()) {
-                if (d.label().equals("filter")) {
+                if ("filter".equals(d.label())) {
                     assertEquals(Decision.Type.NO, d.type());
                     assertEquals(
                         "node does not match index setting [index.routing.allocation.include] filters [_name:\"non_existent_node\"]",
@@ -486,7 +486,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             parser.nextToken();
             assertEquals("allocate_explanation", parser.currentName());
             parser.nextToken();
-            if (allocationDecision.equals("awaiting_info")) {
+            if ("awaiting_info".equals(allocationDecision)) {
                 assertEquals(Explanations.Allocation.AWAITING_INFO, parser.text());
             } else {
                 assertEquals(Explanations.Allocation.ALL_NODES_FORBIDDEN, parser.text());
@@ -552,7 +552,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
         assertNotNull(moveDecision.getCanRemainDecision());
         assertEquals(Decision.Type.NO, moveDecision.getCanRemainDecision().type());
         for (Decision d : moveDecision.getCanRemainDecision().getDecisions()) {
-            if (d.label().equals("filter")) {
+            if ("filter".equals(d.label())) {
                 assertEquals(Decision.Type.NO, d.type());
                 assertEquals(
                     "node does not match index setting [index.routing.allocation.include] filters [_name:\"non_existent_node\"]",
@@ -575,7 +575,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             assertEquals(1, result.getCanAllocateDecision().getDecisions().size());
         }
         for (Decision d : result.getCanAllocateDecision().getDecisions()) {
-            if (d.label().equals("filter")) {
+            if ("filter".equals(d.label())) {
                 assertEquals(Decision.Type.NO, d.type());
                 assertEquals(
                     "node does not match index setting [index.routing.allocation.include] filters [_name:\"non_existent_node\"]",
@@ -665,7 +665,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
         assertNotNull(moveDecision.getClusterRebalanceDecision());
         assertEquals(Decision.Type.NO, moveDecision.getClusterRebalanceDecision().type());
         for (Decision d : moveDecision.getClusterRebalanceDecision().getDecisions()) {
-            if (d.label().equals("enable")) {
+            if ("enable".equals(d.label())) {
                 assertEquals(Decision.Type.NO, d.type());
                 assertEquals("no rebalancing is allowed due to index setting [index.routing.rebalance.enable=none]", d.getExplanation());
             } else {
@@ -885,7 +885,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
         }
         String primaryNodeName = primaryNodeName();
         for (Decision d : result.getCanAllocateDecision().getDecisions()) {
-            if (d.label().equals("filter")) {
+            if ("filter".equals(d.label())) {
                 assertEquals(Decision.Type.NO, d.type());
                 assertEquals(Strings.format("""
                     node does not match index setting [index.routing.allocation.include] filters [_name:"%s"]\
@@ -1333,7 +1333,7 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             while ((token = parser.nextToken()) != Token.END_OBJECT) { // until we reach end of unassigned_info
                 if (token == XContentParser.Token.FIELD_NAME) {
                     assertNotEquals("delayed", parser.currentName()); // we should never display "delayed" from unassigned info
-                    if (parser.currentName().equals("last_allocation_status")) {
+                    if ("last_allocation_status".equals(parser.currentName())) {
                         parser.nextToken();
                         assertThat(
                             parser.text(),
@@ -1358,11 +1358,11 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             while ((token = parser.nextToken()) != Token.END_OBJECT) { // until we reach end of current_node
                 if (token == Token.FIELD_NAME) {
                     assertTrue(
-                        parser.currentName().equals("id")
-                            || parser.currentName().equals("name")
-                            || parser.currentName().equals("transport_address")
-                            || parser.currentName().equals("roles")
-                            || parser.currentName().equals("weight_ranking")
+                        "id".equals(parser.currentName())
+                            || "name".equals(parser.currentName())
+                            || "transport_address".equals(parser.currentName())
+                            || "roles".equals(parser.currentName())
+                            || "weight_ranking".equals(parser.currentName())
                     );
                 } else if (token == Token.START_ARRAY || token == Token.END_ARRAY) {
                     assertEquals("roles", parser.currentName());
@@ -1513,8 +1513,8 @@ public final class ClusterAllocationExplainIT extends ESIntegTestCase {
             assertEquals("decision", parser.currentName());
             parser.nextToken();
             String decisionText = parser.text();
-            if ((allocationDecision == AllocationDecision.NO && decisionText.equals("NO")
-                || (allocationDecision == AllocationDecision.THROTTLED && decisionText.equals("THROTTLE")))) {
+            if ((allocationDecision == AllocationDecision.NO && "NO".equals(decisionText)
+                || (allocationDecision == AllocationDecision.THROTTLED && "THROTTLE".equals(decisionText)))) {
                 atLeastOneMatchingDecisionFound = true;
             }
             assertNotNull(decisionText);

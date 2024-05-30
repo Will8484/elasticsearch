@@ -38,7 +38,7 @@ public class NerProcessor extends NlpTask.Processor {
             if (entity.startsWith("B-") || entity.startsWith("I-") || entity.startsWith("B_") || entity.startsWith("I_")) {
                 entity = entity.substring(2);
                 return new IobTag(tag, entity);
-            } else if (entity.equals("O")) {
+            } else if ("O".equals(entity)) {
                 return new IobTag(tag, entity);
             } else {
                 throw new IllegalArgumentException("classification label [" + tag + "] is not an entity I-O-B tag.");

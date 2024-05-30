@@ -50,11 +50,11 @@ public enum ClusterHealthStatus implements Writeable {
     }
 
     public static ClusterHealthStatus fromString(String status) {
-        if (status.equalsIgnoreCase("green")) {
+        if ("green".equalsIgnoreCase(status)) {
             return GREEN;
-        } else if (status.equalsIgnoreCase("yellow")) {
+        } else if ("yellow".equalsIgnoreCase(status)) {
             return YELLOW;
-        } else if (status.equalsIgnoreCase("red")) {
+        } else if ("red".equalsIgnoreCase(status)) {
             return RED;
         } else {
             throw new IllegalArgumentException("unknown cluster health status [" + status + "]");

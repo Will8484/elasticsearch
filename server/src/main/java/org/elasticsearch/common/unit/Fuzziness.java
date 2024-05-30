@@ -78,7 +78,7 @@ public final class Fuzziness implements ToXContentFragment, Writeable {
         }
         String upperCase = fuzzinessString.toUpperCase(Locale.ROOT);
         // check if it is one of the "AUTO" variants
-        if (upperCase.equals("AUTO")) {
+        if ("AUTO".equals(upperCase)) {
             return Fuzziness.AUTO;
         } else if (upperCase.startsWith("AUTO:")) {
             return parseCustomAuto(upperCase);
@@ -199,7 +199,7 @@ public final class Fuzziness implements ToXContentFragment, Writeable {
     }
 
     private boolean isAutoWithCustomValues() {
-        return fuzziness.equals("AUTO") && (lowDistance != DEFAULT_LOW_DISTANCE || highDistance != DEFAULT_HIGH_DISTANCE);
+        return "AUTO".equals(fuzziness) && (lowDistance != DEFAULT_LOW_DISTANCE || highDistance != DEFAULT_HIGH_DISTANCE);
     }
 
     @Override

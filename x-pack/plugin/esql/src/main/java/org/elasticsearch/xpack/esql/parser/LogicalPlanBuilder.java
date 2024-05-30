@@ -110,7 +110,7 @@ public class LogicalPlanBuilder extends ExpressionBuilder {
             Map<String, Object> options = visitCommandOptions(ctx.commandOptions());
             String appendSeparator = "";
             for (Map.Entry<String, Object> item : options.entrySet()) {
-                if (item.getKey().equalsIgnoreCase("append_separator") == false) {
+                if ("append_separator".equalsIgnoreCase(item.getKey()) == false) {
                     throw new ParsingException(source(ctx), "Invalid option for dissect: [{}]", item.getKey());
                 }
                 if (item.getValue() instanceof String == false) {

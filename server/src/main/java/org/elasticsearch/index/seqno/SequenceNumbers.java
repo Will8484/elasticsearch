@@ -43,10 +43,10 @@ public class SequenceNumbers {
 
         for (final Map.Entry<String, String> entry : commitData) {
             final String key = entry.getKey();
-            if (key.equals(SequenceNumbers.LOCAL_CHECKPOINT_KEY)) {
+            if (SequenceNumbers.LOCAL_CHECKPOINT_KEY.equals(key)) {
                 assert localCheckpoint == NO_OPS_PERFORMED : localCheckpoint;
                 localCheckpoint = Long.parseLong(entry.getValue());
-            } else if (key.equals(SequenceNumbers.MAX_SEQ_NO)) {
+            } else if (SequenceNumbers.MAX_SEQ_NO.equals(key)) {
                 assert maxSeqNo == NO_OPS_PERFORMED : maxSeqNo;
                 maxSeqNo = Long.parseLong(entry.getValue());
             }

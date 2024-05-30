@@ -632,7 +632,7 @@ public class MoreLikeThisIT extends ESIntegTestCase {
             logger.info("Testing with minimum_should_match = {}", minimumShouldMatch);
             final int finalI = i;
             assertNoFailuresAndResponse(prepareSearch("test").setQuery(mltQuery), response -> {
-                if (minimumShouldMatch.equals("0%")) {
+                if ("0%".equals(minimumShouldMatch)) {
                     assertHitCount(response, 10);
                 } else {
                     assertHitCount(response, 11 - finalI);

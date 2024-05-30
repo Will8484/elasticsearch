@@ -222,21 +222,21 @@ public class ObjectMapper extends Mapper {
             MappingParserContext parserContext,
             ObjectMapper.Builder builder
         ) {
-            if (fieldName.equals("dynamic")) {
+            if ("dynamic".equals(fieldName)) {
                 String value = fieldNode.toString();
-                if (value.equalsIgnoreCase("strict")) {
+                if ("strict".equalsIgnoreCase(value)) {
                     builder.dynamic(Dynamic.STRICT);
-                } else if (value.equalsIgnoreCase("runtime")) {
+                } else if ("runtime".equalsIgnoreCase(value)) {
                     builder.dynamic(Dynamic.RUNTIME);
                 } else {
                     boolean dynamic = XContentMapValues.nodeBooleanValue(fieldNode, fieldName + ".dynamic");
                     builder.dynamic(dynamic ? Dynamic.TRUE : Dynamic.FALSE);
                 }
                 return true;
-            } else if (fieldName.equals("enabled")) {
+            } else if ("enabled".equals(fieldName)) {
                 builder.enabled(XContentMapValues.nodeBooleanValue(fieldNode, fieldName + ".enabled"));
                 return true;
-            } else if (fieldName.equals("properties")) {
+            } else if ("properties".equals(fieldName)) {
                 if (fieldNode instanceof Collection && ((Collection) fieldNode).isEmpty()) {
                     // nothing to do here, empty (to support "properties: []" case)
                 } else if ((fieldNode instanceof Map) == false) {
@@ -245,7 +245,7 @@ public class ObjectMapper extends Mapper {
                     parseProperties(builder, (Map<String, Object>) fieldNode, parserContext);
                 }
                 return true;
-            } else if (fieldName.equals("include_in_all")) {
+            } else if ("include_in_all".equals(fieldName)) {
                 deprecationLogger.warn(
                     DeprecationCategory.MAPPINGS,
                     "include_in_all",
@@ -300,7 +300,7 @@ public class ObjectMapper extends Mapper {
                         }
                     }
 
-                    if (objBuilder.subobjects.value() == false && type.equals(ObjectMapper.CONTENT_TYPE)) {
+                    if (objBuilder.subobjects.value() == false && ObjectMapper.CONTENT_TYPE.equals(type)) {
                         throw new MapperParsingException(
                             "Tried to add subobject ["
                                 + fieldName

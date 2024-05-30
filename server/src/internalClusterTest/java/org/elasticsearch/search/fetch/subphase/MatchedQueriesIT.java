@@ -57,11 +57,11 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("3") || hit.getId().equals("2")) {
+                    if ("3".equals(hit.getId()) || "2".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("test2"));
                         assertThat(hit.getMatchedQueryScore("test2"), equalTo(1f));
-                    } else if (hit.getId().equals("1")) {
+                    } else if ("1".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("test1"));
                         assertThat(hit.getMatchedQueryScore("test1"), equalTo(1f));
@@ -79,11 +79,11 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1") || hit.getId().equals("2")) {
+                    if ("1".equals(hit.getId()) || "2".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("test1"));
                         assertThat(hit.getMatchedQueryScore("test1"), equalTo(1f));
-                    } else if (hit.getId().equals("3")) {
+                    } else if ("3".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("test2"));
                         assertThat(hit.getMatchedQueryScore("test2"), equalTo(1f));
@@ -112,13 +112,13 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1")) {
+                    if ("1".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(2));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("title"));
                         assertThat(hit.getMatchedQueryScore("title"), greaterThan(0f));
-                    } else if (hit.getId().equals("2") || hit.getId().equals("3")) {
+                    } else if ("2".equals(hit.getId()) || "3".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
@@ -137,13 +137,13 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1")) {
+                    if ("1".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(2));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("title"));
                         assertThat(hit.getMatchedQueryScore("title"), greaterThan(0f));
-                    } else if (hit.getId().equals("2") || hit.getId().equals("3")) {
+                    } else if ("2".equals(hit.getId()) || "3".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
@@ -171,7 +171,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1") || hit.getId().equals("2") || hit.getId().equals("3")) {
+                    if ("1".equals(hit.getId()) || "2".equals(hit.getId()) || "3".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(2));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
@@ -190,7 +190,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             response -> {
                 assertHitCount(response, 3L);
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1") || hit.getId().equals("2") || hit.getId().equals("3")) {
+                    if ("1".equals(hit.getId()) || "2".equals(hit.getId()) || "3".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(2));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("name"));
                         assertThat(hit.getMatchedQueryScore("name"), greaterThan(0f));
@@ -215,7 +215,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             assertHitCount(response, 1L);
 
             for (SearchHit hit : response.getHits()) {
-                if (hit.getId().equals("1")) {
+                if ("1".equals(hit.getId())) {
                     assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                     assertThat(hit.getMatchedQueriesAndScores(), hasKey("regex"));
                     assertThat(hit.getMatchedQueryScore("regex"), equalTo(1f));
@@ -237,7 +237,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             assertHitCount(response, 1L);
 
             for (SearchHit hit : response.getHits()) {
-                if (hit.getId().equals("1")) {
+                if ("1".equals(hit.getId())) {
                     assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                     assertThat(hit.getMatchedQueriesAndScores(), hasKey("prefix"));
                     assertThat(hit.getMatchedQueryScore("prefix"), equalTo(1f));
@@ -259,7 +259,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             assertHitCount(response, 1L);
 
             for (SearchHit hit : response.getHits()) {
-                if (hit.getId().equals("1")) {
+                if ("1".equals(hit.getId())) {
                     assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                     assertThat(hit.getMatchedQueriesAndScores(), hasKey("fuzzy"));
                     assertThat(hit.getMatchedQueryScore("fuzzy"), greaterThan(0f));
@@ -281,7 +281,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
             assertHitCount(response, 1L);
 
             for (SearchHit hit : response.getHits()) {
-                if (hit.getId().equals("1")) {
+                if ("1".equals(hit.getId())) {
                     assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                     assertThat(hit.getMatchedQueriesAndScores(), hasKey("wildcard"));
                     assertThat(hit.getMatchedQueryScore("wildcard"), equalTo(1f));
@@ -305,7 +305,7 @@ public class MatchedQueriesIT extends ESIntegTestCase {
                 assertHitCount(response, 1L);
 
                 for (SearchHit hit : response.getHits()) {
-                    if (hit.getId().equals("1")) {
+                    if ("1".equals(hit.getId())) {
                         assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                         assertThat(hit.getMatchedQueriesAndScores(), hasKey("span"));
                         assertThat(hit.getMatchedQueryScore("span"), greaterThan(0f));
@@ -340,11 +340,11 @@ public class MatchedQueriesIT extends ESIntegTestCase {
                 response -> {
                     assertHitCount(response, 2L);
                     for (SearchHit hit : response.getHits()) {
-                        if (hit.getId().equals("1")) {
+                        if ("1".equals(hit.getId())) {
                             assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                             assertThat(hit.getMatchedQueriesAndScores(), hasKey("dolor"));
                             assertThat(hit.getMatchedQueryScore("dolor"), greaterThan(0f));
-                        } else if (hit.getId().equals("2")) {
+                        } else if ("2".equals(hit.getId())) {
                             assertThat(hit.getMatchedQueriesAndScores().size(), equalTo(1));
                             assertThat(hit.getMatchedQueriesAndScores(), hasKey("elit"));
                             assertThat(hit.getMatchedQueryScore("elit"), greaterThan(0f));

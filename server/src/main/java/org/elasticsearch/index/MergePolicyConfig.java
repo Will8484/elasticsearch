@@ -393,9 +393,9 @@ public final class MergePolicyConfig {
 
     private static CompoundFileThreshold parseCompoundFormat(String noCFSRatio) {
         noCFSRatio = noCFSRatio.trim();
-        if (noCFSRatio.equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(noCFSRatio)) {
             return new CompoundFileThreshold(1.0d);
-        } else if (noCFSRatio.equalsIgnoreCase("false")) {
+        } else if ("false".equalsIgnoreCase(noCFSRatio)) {
             return new CompoundFileThreshold(0.0d);
         } else {
             try {

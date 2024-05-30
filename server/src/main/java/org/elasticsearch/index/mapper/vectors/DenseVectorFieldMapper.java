@@ -1069,7 +1069,7 @@ public class DenseVectorFieldMapper extends FieldMapper {
             throw new MapperParsingException("[index_options] requires field [type] to be configured");
         }
         String type = XContentMapValues.nodeStringValue(typeNode);
-        if (type.equals("hnsw")) {
+        if ("hnsw".equals(type)) {
             return HnswIndexOptions.parseIndexOptions(fieldName, indexOptionsMap);
         } else {
             throw new MapperParsingException("Unknown vector index options type [" + type + "] for field [" + fieldName + "]");

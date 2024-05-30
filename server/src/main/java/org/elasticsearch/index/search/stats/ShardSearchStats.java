@@ -39,7 +39,7 @@ public final class ShardSearchStats implements SearchOperationListener {
         Map<String, SearchStats.Stats> groupsSt = null;
         if (CollectionUtils.isEmpty(groups) == false) {
             groupsSt = Maps.newMapWithExpectedSize(groupsStats.size());
-            if (groups.length == 1 && groups[0].equals("_all")) {
+            if (groups.length == 1 && "_all".equals(groups[0])) {
                 for (Map.Entry<String, StatsHolder> entry : groupsStats.entrySet()) {
                     groupsSt.put(entry.getKey(), entry.getValue().stats());
                 }

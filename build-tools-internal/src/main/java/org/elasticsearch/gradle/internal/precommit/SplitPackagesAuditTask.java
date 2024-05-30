@@ -252,7 +252,7 @@ public class SplitPackagesAuditTask extends DefaultTask {
                     LOGGER.error("Package is not split: " + fqcn);
                     filterErrorsFound = true;
                 } else {
-                    if (className.equals("*")) {
+                    if ("*".equals(className)) {
                         currentClasses.clear();
                     } else if (currentClasses.remove(fqcn) == false) {
                         LOGGER.error("Class does not exist: " + fqcn);
@@ -316,7 +316,7 @@ public class SplitPackagesAuditTask extends DefaultTask {
 
         private String formatDependency(File dependencyFile) {
             if (dependencyFile.isDirectory()) {
-                while (dependencyFile.getName().equals("build") == false) {
+                while ("build".equals(dependencyFile.getName()) == false) {
                     dependencyFile = dependencyFile.getParentFile();
                 }
                 String projectName = getParameters().getProjectBuildDirs().get().get(dependencyFile);

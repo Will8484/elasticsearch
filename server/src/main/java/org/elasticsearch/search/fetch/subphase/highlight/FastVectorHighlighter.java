@@ -78,7 +78,7 @@ public class FastVectorHighlighter implements Highlighter {
             );
         }
 
-        Encoder encoder = field.fieldOptions().encoder().equals("html") ? HighlightUtils.Encoders.HTML : HighlightUtils.Encoders.DEFAULT;
+        Encoder encoder = "html".equals(field.fieldOptions().encoder()) ? HighlightUtils.Encoders.HTML : HighlightUtils.Encoders.DEFAULT;
 
         if (fieldContext.cache.containsKey(CACHE_KEY) == false) {
             fieldContext.cache.put(CACHE_KEY, new HighlighterEntry());

@@ -93,10 +93,10 @@ public class ClusterSearchShardsIT extends ESIntegTestCase {
         boolean seenTest1 = false;
         boolean seenTest2 = false;
         for (ClusterSearchShardsGroup group : response.getGroups()) {
-            if (group.getShardId().getIndexName().equals("test1")) {
+            if ("test1".equals(group.getShardId().getIndexName())) {
                 seenTest1 = true;
                 assertThat(group.getShards().length, equalTo(2));
-            } else if (group.getShardId().getIndexName().equals("test2")) {
+            } else if ("test2".equals(group.getShardId().getIndexName())) {
                 seenTest2 = true;
                 assertThat(group.getShards().length, equalTo(2));
             } else {

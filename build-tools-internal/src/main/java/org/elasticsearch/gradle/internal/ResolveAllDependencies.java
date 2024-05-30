@@ -63,7 +63,7 @@ public abstract class ResolveAllDependencies extends DefaultTask {
             String bundledJdkMajorVersion = VersionProperties.getBundledJdkMajorVersion();
             javaToolchainSpec.getLanguageVersion().set(JavaLanguageVersion.of(bundledJdkMajorVersion));
             javaToolchainSpec.getVendor()
-                .set(bundledVendor.equals("openjdk") ? JvmVendorSpec.ORACLE : JvmVendorSpec.matching(bundledVendor));
+                .set("openjdk".equals(bundledVendor) ? JvmVendorSpec.ORACLE : JvmVendorSpec.matching(bundledVendor));
         }).get();
     }
 

@@ -138,7 +138,7 @@ public class ClusterInfoServiceIT extends ESIntegTestCase {
                 Settings.builder()
                     .put(Store.INDEX_STORE_STATS_REFRESH_INTERVAL_SETTING.getKey(), 0)
                     .put(EnableAllocationDecider.INDEX_ROUTING_REBALANCE_ENABLE_SETTING.getKey(), EnableAllocationDecider.Rebalance.NONE)
-                    .put(IndexMetadata.SETTING_INDEX_HIDDEN, indexName.equals(TEST_SYSTEM_INDEX_NAME) || randomBoolean())
+                    .put(IndexMetadata.SETTING_INDEX_HIDDEN, TEST_SYSTEM_INDEX_NAME.equals(indexName) || randomBoolean())
                     .build()
             )
         );

@@ -41,11 +41,11 @@ public class LowerCaseTokenFilterFactory extends AbstractTokenFilterFactory impl
     public TokenStream create(TokenStream tokenStream) {
         if (lang == null) {
             return new LowerCaseFilter(tokenStream);
-        } else if (lang.equalsIgnoreCase("greek")) {
+        } else if ("greek".equalsIgnoreCase(lang)) {
             return new GreekLowerCaseFilter(tokenStream);
-        } else if (lang.equalsIgnoreCase("irish")) {
+        } else if ("irish".equalsIgnoreCase(lang)) {
             return new IrishLowerCaseFilter(tokenStream);
-        } else if (lang.equalsIgnoreCase("turkish")) {
+        } else if ("turkish".equalsIgnoreCase(lang)) {
             return new TurkishLowerCaseFilter(tokenStream);
         } else {
             throw new IllegalArgumentException("language [" + lang + "] not support for lower case");

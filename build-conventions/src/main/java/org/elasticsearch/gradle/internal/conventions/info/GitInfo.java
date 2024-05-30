@@ -154,7 +154,7 @@ public class GitInfo {
                     String[] pair = line.trim().split("=", 2);
                     props.put(pair[0].trim(), pair[1].trim());
                 } else {
-                    if (line.equals("[remote \"origin\"]")) {
+                    if ("[remote \"origin\"]".equals(line)) {
                         foundOrigin = true;
                     }
                 }

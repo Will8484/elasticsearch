@@ -245,7 +245,7 @@ public class ExpressionScriptEngine implements ScriptEngine {
         boolean needsScores = false;
         for (String variable : expr.variables) {
             try {
-                if (variable.equals("_score")) {
+                if ("_score".equals(variable)) {
                     bindings.add("_score", DoubleValuesSource.SCORES);
                     needsScores = true;
                 } else if (vars != null && vars.containsKey(variable)) {
@@ -302,10 +302,10 @@ public class ExpressionScriptEngine implements ScriptEngine {
         ReplaceableConstDoubleValueSource specialValue = null;
         for (String variable : expr.variables) {
             try {
-                if (variable.equals("_score")) {
+                if ("_score".equals(variable)) {
                     bindings.add("_score", DoubleValuesSource.SCORES);
                     needsScores = true;
-                } else if (variable.equals("_value")) {
+                } else if ("_value".equals(variable)) {
                     specialValue = new ReplaceableConstDoubleValueSource();
                     bindings.add("_value", specialValue);
                     // noop: _value is special for aggregations, and is handled in ExpressionScriptBindings
@@ -374,10 +374,10 @@ public class ExpressionScriptEngine implements ScriptEngine {
         boolean needsScores = false;
         for (String variable : expr.variables) {
             try {
-                if (variable.equals("_score")) {
+                if ("_score".equals(variable)) {
                     bindings.add("_score", DoubleValuesSource.SCORES);
                     needsScores = true;
-                } else if (variable.equals("_value")) {
+                } else if ("_value".equals(variable)) {
                     bindings.add("_value", DoubleValuesSource.constant(0));
                     // noop: _value is special for aggregations, and is handled in ExpressionScriptBindings
                     // TODO: if some uses it in a scoring expression, they will get a nasty failure when evaluating...need a

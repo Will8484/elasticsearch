@@ -479,7 +479,7 @@ public final class AnalysisRegistry implements Closeable {
                             component + " [" + name + "] " + "must specify either an analyzer type, or a tokenizer"
                         );
                     }
-                } else if (typeName.equals("custom")) {
+                } else if ("custom".equals(typeName)) {
                     factory = (T) new CustomAnalyzerProvider(settings, name, currentSettings);
                 }
                 if (factory != null) {
@@ -487,7 +487,7 @@ public final class AnalysisRegistry implements Closeable {
                     continue;
                 }
             } else if (component == Component.NORMALIZER) {
-                if (typeName == null || typeName.equals("custom")) {
+                if (typeName == null || "custom".equals(typeName)) {
                     T factory = (T) new CustomNormalizerProvider(settings, name, currentSettings);
                     factories.put(name, factory);
                     continue;

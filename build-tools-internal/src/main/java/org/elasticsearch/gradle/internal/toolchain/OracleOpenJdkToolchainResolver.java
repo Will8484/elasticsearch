@@ -81,7 +81,7 @@ public abstract class OracleOpenJdkToolchainResolver extends AbstractCustomJavaT
      * 4. Aarch64 windows images are not supported
      */
     private boolean requestIsSupported(JavaToolchainRequest request) {
-        if (VersionProperties.getBundledJdkVendor().toLowerCase().equals("openjdk") == false) {
+        if ("openjdk".equals(VersionProperties.getBundledJdkVendor().toLowerCase()) == false) {
             return false;
         }
         JavaToolchainSpec javaToolchainSpec = request.getJavaToolchainSpec();

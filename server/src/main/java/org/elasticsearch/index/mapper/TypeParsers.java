@@ -93,7 +93,7 @@ public class TypeParsers {
         String propName,
         Object propNode
     ) {
-        if (propName.equals("fields")) {
+        if ("fields".equals(propName)) {
             if (parserContext.isWithinMultiField()) {
                 // For indices created prior to 8.0, we only emit a deprecation warning and do not fail type parsing. This is to
                 // maintain the backwards-compatibility guarantee that we can always load indexes from the previous major version.

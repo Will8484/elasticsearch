@@ -40,16 +40,16 @@ public abstract class MapperScriptTestCase<FactoryType> extends MapperServiceTes
     @Override
     @SuppressWarnings("unchecked")
     protected <T> T compileScript(Script script, ScriptContext<T> context) {
-        if (script.getIdOrCode().equals("serializer_test")) {
+        if ("serializer_test".equals(script.getIdOrCode())) {
             return (T) serializableScript();
         }
-        if (script.getIdOrCode().equals("throws")) {
+        if ("throws".equals(script.getIdOrCode())) {
             return (T) errorThrowingScript();
         }
-        if (script.getIdOrCode().equals("single-valued")) {
+        if ("single-valued".equals(script.getIdOrCode())) {
             return (T) singleValueScript();
         }
-        if (script.getIdOrCode().equals("multi-valued")) {
+        if ("multi-valued".equals(script.getIdOrCode())) {
             return (T) multipleValuesScript();
         }
         return (T) script(script.getIdOrCode());

@@ -221,7 +221,7 @@ public final class WhitelistLoader {
 
                         // Handle the end of a definition and reset all previously gathered values.
                         // Expects the following format: '}' '\n'
-                    } else if (line.equals("}")) {
+                    } else if ("}".equals(line)) {
                         if (parseType == null) {
                             throw new IllegalArgumentException("invalid definition: extraneous closing bracket");
                         }

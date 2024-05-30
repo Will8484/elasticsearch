@@ -212,7 +212,7 @@ final class EmbeddedModulePath {
         Path parent = file.getParent();
         if (parent == null) {
             String name = file.toString();
-            if (name.endsWith(".class") && name.equals(MODULE_INFO) == false) {
+            if (name.endsWith(".class") && MODULE_INFO.equals(name) == false) {
                 String msg = name + " found in top-level directory (unnamed package not allowed in module)";
                 throw new InvalidModuleDescriptorException(msg);
             }
@@ -234,7 +234,7 @@ final class EmbeddedModulePath {
         assert name.endsWith(separator) == false;
         int index = name.lastIndexOf(separator);
         if (index == -1) {
-            if (name.endsWith(".class") && name.equals(MODULE_INFO) == false) {
+            if (name.endsWith(".class") && MODULE_INFO.equals(name) == false) {
                 String msg = name + " found in top-level directory (unnamed package not allowed in module)";
                 throw new InvalidModuleDescriptorException(msg);
             }
@@ -258,7 +258,7 @@ final class EmbeddedModulePath {
         }
         if (SERVICES_PREFIX.length() < cf.length()) {
             String prefix = cf.substring(0, SERVICES_PREFIX.length());
-            if (prefix.equals(SERVICES_PREFIX)) {
+            if (SERVICES_PREFIX.equals(prefix)) {
                 String sn = cf.substring(SERVICES_PREFIX.length());
                 if (isClassName(sn)) {
                     return Optional.of(sn);

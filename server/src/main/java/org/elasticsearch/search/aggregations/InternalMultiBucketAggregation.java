@@ -90,7 +90,7 @@ public abstract class InternalMultiBucketAggregation<
 
     static Object resolvePropertyFromPath(List<String> path, List<? extends InternalBucket> buckets, String name) {
         String aggName = path.get(0);
-        if (aggName.equals("_bucket_count")) {
+        if ("_bucket_count".equals(aggName)) {
             return buckets.size();
         }
 
@@ -213,12 +213,12 @@ public abstract class InternalMultiBucketAggregation<
             }
             Aggregations aggregations = getAggregations();
             String aggName = path.get(0);
-            if (aggName.equals("_count")) {
+            if ("_count".equals(aggName)) {
                 if (path.size() > 1) {
                     throw new InvalidAggregationPathException("_count must be the last element in the path");
                 }
                 return getDocCount();
-            } else if (aggName.equals("_key")) {
+            } else if ("_key".equals(aggName)) {
                 if (path.size() > 1) {
                     throw new InvalidAggregationPathException("_key must be the last element in the path");
                 }

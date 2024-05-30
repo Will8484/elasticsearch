@@ -57,7 +57,7 @@ final class UserAgentParser {
             token = yamlParser.nextToken();
 
             for (; token != null; token = yamlParser.nextToken()) {
-                if (token == XContentParser.Token.FIELD_NAME && yamlParser.currentName().equals("user_agent_parsers")) {
+                if (token == XContentParser.Token.FIELD_NAME && "user_agent_parsers".equals(yamlParser.currentName())) {
                     List<Map<String, String>> parserConfigurations = readParserConfigurations(yamlParser);
 
                     for (Map<String, String> map : parserConfigurations) {
@@ -72,7 +72,7 @@ final class UserAgentParser {
                             )
                         );
                     }
-                } else if (token == XContentParser.Token.FIELD_NAME && yamlParser.currentName().equals("os_parsers")) {
+                } else if (token == XContentParser.Token.FIELD_NAME && "os_parsers".equals(yamlParser.currentName())) {
                     List<Map<String, String>> parserConfigurations = readParserConfigurations(yamlParser);
 
                     for (Map<String, String> map : parserConfigurations) {
@@ -87,7 +87,7 @@ final class UserAgentParser {
                             )
                         );
                     }
-                } else if (token == XContentParser.Token.FIELD_NAME && yamlParser.currentName().equals("device_parsers")) {
+                } else if (token == XContentParser.Token.FIELD_NAME && "device_parsers".equals(yamlParser.currentName())) {
                     List<Map<String, String>> parserConfigurations = readParserConfigurations(yamlParser);
 
                     for (Map<String, String> map : parserConfigurations) {

@@ -101,7 +101,7 @@ public class PutSamlServiceProviderRequest extends ActionRequest {
         if (Strings.hasText(document.acs)) { // if this is blank the document validation will fail
             try {
                 final URL url = new URL(document.acs);
-                if (url.getProtocol().equals("https") == false) {
+                if ("https".equals(url.getProtocol()) == false) {
                     validationException = addValidationError(
                         "[" + SamlServiceProviderDocument.Fields.ACS + "] must use the [https] protocol",
                         validationException

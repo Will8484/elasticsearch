@@ -62,10 +62,10 @@ public class IntArrayBenchmark {
     }
 
     private BytesReference bytesImpl(BytesReference bytes) {
-        if (type.equals("array")) {
+        if ("array".equals(type)) {
             return new BytesArray(bytes.toBytesRef());
         }
-        if (type.equals("paged_bytes_array")) {
+        if ("paged_bytes_array".equals(type)) {
             if (bytes instanceof PagedBytesReference == false) {
                 throw new AssertionError("expected PagedBytesReference but saw [" + bytes.getClass() + "]");
             }

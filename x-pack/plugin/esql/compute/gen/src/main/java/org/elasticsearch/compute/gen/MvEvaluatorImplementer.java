@@ -400,7 +400,7 @@ public class MvEvaluatorImplementer {
      */
     private static class FinishFunction {
         static FinishFunction from(TypeElement declarationType, String name, TypeName workType, TypeName fieldType) {
-            if (name.equals("")) {
+            if ("".equals(name)) {
                 if (false == workType.equals(fieldType)) {
                     throw new IllegalArgumentException(
                         "the [finish] enum value is required because the first and second arguments differ in type"
@@ -441,7 +441,7 @@ public class MvEvaluatorImplementer {
                     }
                     continue;
                 }
-                if (param.getSimpleName().toString().equals("valueCount")) {
+                if ("valueCount".equals(param.getSimpleName().toString())) {
                     if (param.asType().getKind() != TypeKind.INT) {
                         throw new IllegalArgumentException("count argument must have type [int]");
                     }
@@ -463,7 +463,7 @@ public class MvEvaluatorImplementer {
      */
     private static class SingleValueFunction {
         static SingleValueFunction from(TypeElement declarationType, String name, TypeName resultType, TypeName fieldType) {
-            if (name.equals("")) {
+            if ("".equals(name)) {
                 return null;
             }
             ExecutableElement fn = findMethod(
@@ -495,7 +495,7 @@ public class MvEvaluatorImplementer {
      */
     private class AscendingFunction {
         static AscendingFunction from(MvEvaluatorImplementer impl, TypeElement declarationType, String name) {
-            if (name.equals("")) {
+            if ("".equals(name)) {
                 return null;
             }
 

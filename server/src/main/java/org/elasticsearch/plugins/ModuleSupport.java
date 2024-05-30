@@ -188,7 +188,7 @@ public class ModuleSupport {
         assert name.endsWith(separator) == false;
         int index = name.lastIndexOf(separator);
         if (index == -1) {
-            if (name.endsWith(".class") && name.equals(MODULE_INFO) == false) {
+            if (name.endsWith(".class") && MODULE_INFO.equals(name) == false) {
                 String msg = name + " found in top-level directory (unnamed package not allowed in module)";
                 throw new InvalidModuleDescriptorException(msg);
             }

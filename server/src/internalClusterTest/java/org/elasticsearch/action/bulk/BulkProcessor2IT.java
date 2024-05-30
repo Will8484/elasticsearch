@@ -202,7 +202,7 @@ public class BulkProcessor2IT extends ESIntegTestCase {
         Set<String> readOnlyIds = new HashSet<>();
         for (BulkItemResponse bulkItemResponse : listener.bulkItems) {
             assertThat(bulkItemResponse.getIndex(), either(equalTo("test")).or(equalTo("test-ro")));
-            if (bulkItemResponse.getIndex().equals("test")) {
+            if ("test".equals(bulkItemResponse.getIndex())) {
                 assertThat(bulkItemResponse.isFailed(), equalTo(false));
                 // with concurrent requests > 1 we can't rely on the order of the bulk requests
                 assertThat(Integer.valueOf(bulkItemResponse.getId()), both(greaterThan(0)).and(lessThanOrEqualTo(testDocs)));

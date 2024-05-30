@@ -274,7 +274,7 @@ public class TextEmbeddingQueryIT extends PyTorchModelRestTestCase {
             boolean found = false;
             for (var hit : hits) {
                 String source = (String) MapHelper.dig("_source.source_text", hit);
-                if (source.equals("my words")) {
+                if ("my words".equals(source)) {
                     assertThat((Double) MapHelper.dig("_score", hit), closeTo(10.0, 0.01));
                     found = true;
                 }

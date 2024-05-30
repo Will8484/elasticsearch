@@ -133,7 +133,7 @@ public abstract class ElasticsearchBuildCompletePlugin implements Plugin<Project
             }
             uploadFile.getParentFile().mkdirs();
             createBuildArchiveTar(parameters.getFilteredFiles().get(), parameters.getProjectDir().get(), uploadFile);
-            if (uploadFile.exists() && System.getenv("BUILDKITE").equals("true")) {
+            if (uploadFile.exists() && "true".equals(System.getenv("BUILDKITE"))) {
                 String uploadFilePath = "build/" + uploadFile.getName();
                 try {
                     System.out.println("Uploading buildkite artifact: " + uploadFilePath + "...");

@@ -81,7 +81,7 @@ public class UpdateSettingsStepTests extends ESSingleNodeTestCase {
         }
 
         void validate(String valueToCheck) {
-            if (valueToCheck.equals(INVALID_VALUE)) {
+            if (INVALID_VALUE.equals(valueToCheck)) {
                 throw new IllegalArgumentException("[" + INVALID_VALUE + "] is not supported");
             }
         }

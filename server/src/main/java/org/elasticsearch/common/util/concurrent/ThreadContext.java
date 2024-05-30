@@ -668,9 +668,9 @@ public final class ThreadContext implements Writeable {
 
         newRequestHeaders.entrySet()
             .removeIf(
-                entry -> entry.getKey().equalsIgnoreCase("authorization")
-                    || entry.getKey().equalsIgnoreCase("es-secondary-authorization")
-                    || entry.getKey().equalsIgnoreCase("ES-Client-Authentication")
+                entry -> "authorization".equalsIgnoreCase(entry.getKey())
+                    || "es-secondary-authorization".equalsIgnoreCase(entry.getKey())
+                    || "ES-Client-Authentication".equalsIgnoreCase(entry.getKey())
             );
 
         final ThreadContextStruct newContext = new ThreadContextStruct(
@@ -807,7 +807,7 @@ public final class ThreadContext implements Writeable {
             assert value != null;
             long newWarningHeaderSize = warningHeadersSize;
             // check if we can add another warning header - if max size within limits
-            if (key.equals("Warning") && (maxWarningHeaderSize != -1)) { // if size is NOT unbounded, check its limits
+            if ("Warning".equals(key) && (maxWarningHeaderSize != -1)) { // if size is NOT unbounded, check its limits
                 if (warningHeadersSize > maxWarningHeaderSize) { // if max size has already been reached before
                     logger.warn(
                         "Dropping a warning header, as their total size reached the maximum allowed of ["

@@ -102,7 +102,7 @@ public final class ApplicationPrivilege extends Privilege {
             if (allowWildcard == false) {
                 throw new IllegalArgumentException("Application names may not contain '*' (found '" + application + "')");
             }
-            if (application.equals("*")) {
+            if ("*".equals(application)) {
                 // this is allowed and short-circuiting here makes the later validation simpler
                 return;
             }

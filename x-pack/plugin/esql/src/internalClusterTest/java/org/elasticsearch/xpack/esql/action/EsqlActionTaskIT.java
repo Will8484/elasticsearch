@@ -175,7 +175,7 @@ public class EsqlActionTaskIT extends AbstractEsqlIntegTestCase {
                         luceneSources++;
                         continue;
                     }
-                    if (o.operator().equals("ValuesSourceReaderOperator[field = pause_me]")) {
+                    if ("ValuesSourceReaderOperator[field = pause_me]".equals(o.operator())) {
                         ValuesSourceReaderOperator.Status oStatus = (ValuesSourceReaderOperator.Status) o.status();
                         assertMap(
                             oStatus.readersBuilt(),
@@ -185,14 +185,14 @@ public class EsqlActionTaskIT extends AbstractEsqlIntegTestCase {
                         valuesSourceReaders++;
                         continue;
                     }
-                    if (o.operator().equals("ExchangeSourceOperator")) {
+                    if ("ExchangeSourceOperator".equals(o.operator())) {
                         ExchangeSourceOperator.Status oStatus = (ExchangeSourceOperator.Status) o.status();
                         assertThat(oStatus.pagesWaiting(), greaterThanOrEqualTo(0));
                         assertThat(oStatus.pagesEmitted(), greaterThanOrEqualTo(0));
                         exchangeSources++;
                         continue;
                     }
-                    if (o.operator().equals("ExchangeSinkOperator")) {
+                    if ("ExchangeSinkOperator".equals(o.operator())) {
                         ExchangeSinkOperator.Status oStatus = (ExchangeSinkOperator.Status) o.status();
                         assertThat(oStatus.pagesAccepted(), greaterThanOrEqualTo(0));
                         exchangeSinks++;

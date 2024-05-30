@@ -954,7 +954,7 @@ public class FieldSortIT extends ESIntegTestCase {
             for (boolean withFormat : List.of(true, false)) {
                 String format = null;
                 if (withFormat) {
-                    format = type.equals("date") ? "strict_date_optional_time" : "strict_date_optional_time_nanos";
+                    format = "date".equals(type) ? "strict_date_optional_time" : "strict_date_optional_time_nanos";
                 }
 
                 assertResponse(

@@ -53,7 +53,7 @@ public class Platforms {
         final String normalizedOs;
         if (lowerCaseOs.startsWith("windows")) {
             normalizedOs = "windows";
-        } else if (lowerCaseOs.equals("mac os x")) {
+        } else if ("mac os x".equals(lowerCaseOs)) {
             normalizedOs = "darwin";
         } else {
             normalizedOs = lowerCaseOs;
@@ -61,9 +61,9 @@ public class Platforms {
 
         final String lowerCaseArch = osArch.toLowerCase(Locale.ROOT);
         final String normalizedArch;
-        if (lowerCaseArch.equals("amd64")) {
+        if ("amd64".equals(lowerCaseArch)) {
             normalizedArch = "x86_64";
-        } else if (lowerCaseArch.equals("i386")) {
+        } else if ("i386".equals(lowerCaseArch)) {
             normalizedArch = "x86";
         } else {
             normalizedArch = lowerCaseArch;

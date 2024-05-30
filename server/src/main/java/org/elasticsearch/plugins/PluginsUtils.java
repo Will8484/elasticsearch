@@ -62,7 +62,7 @@ public class PluginsUtils {
                     final String filename = plugin.getFileName().toString();
                     if (FileSystemUtils.isDesktopServicesStore(plugin)
                         || filename.startsWith(".removing-")
-                        || filename.equals(".elasticsearch-plugins.yml.cache")) {
+                        || ".elasticsearch-plugins.yml.cache".equals(filename)) {
                         continue;
                     }
                     if (seen.add(filename) == false) {
@@ -238,7 +238,7 @@ public class PluginsUtils {
             if (bundles.add(bundle) == false) {
                 throw new IllegalStateException("duplicate " + type + ": " + bundle.plugin);
             }
-            if (type.equals("module") && bundle.plugin.getName().startsWith("test-") && Build.current().isSnapshot() == false) {
+            if ("module".equals(type) && bundle.plugin.getName().startsWith("test-") && Build.current().isSnapshot() == false) {
                 throw new IllegalStateException("external test module [" + plugin.getFileName() + "] found in non-snapshot build");
             }
         }

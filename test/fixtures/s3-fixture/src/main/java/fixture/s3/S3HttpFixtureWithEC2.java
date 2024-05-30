@@ -53,7 +53,7 @@ public class S3HttpFixtureWithEC2 extends S3HttpFixtureWithSessionToken {
             final String path = exchange.getRequestURI().getPath();
             // http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
             if ("GET".equals(exchange.getRequestMethod()) && path.startsWith(EC2_PATH)) {
-                if (path.equals(EC2_PATH)) {
+                if (EC2_PATH.equals(path)) {
                     final byte[] response = EC2_PROFILE.getBytes(StandardCharsets.UTF_8);
                     exchange.getResponseHeaders().add("Content-Type", "text/plain");
                     exchange.sendResponseHeaders(RestStatus.OK.getStatus(), response.length);

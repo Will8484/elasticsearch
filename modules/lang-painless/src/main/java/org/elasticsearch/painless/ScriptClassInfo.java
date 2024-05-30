@@ -53,7 +53,7 @@ public class ScriptClassInfo {
             if (m.isDefault()) {
                 continue;
             }
-            if (m.getName().equals("execute")) {
+            if ("execute".equals(m.getName())) {
                 if (executeMethod == null) {
                     executeMethod = m;
                     returnType = m.getReturnType();
@@ -67,7 +67,7 @@ public class ScriptClassInfo {
             } else if (m.getName().startsWith("needs") && m.getReturnType() == boolean.class && m.getParameterTypes().length == 0) {
                 needsMethods.add(new org.objectweb.asm.commons.Method(m.getName(), NEEDS_PARAMETER_METHOD_TYPE.toMethodDescriptorString()));
             } else if (m.getName().startsWith("get")
-                && m.getName().equals("getClass") == false
+                && "getClass".equals(m.getName()) == false
                 && Modifier.isStatic(m.getModifiers()) == false) {
                     getReturns.add(
                         definitionTypeForClass(
@@ -104,7 +104,7 @@ public class ScriptClassInfo {
                 && m.getReturnType() == returnType
                 && Modifier.isStatic(m.getModifiers())) {
 
-                if (m.getName().equals("convertFromDef")) {
+                if ("convertFromDef".equals(m.getName())) {
                     if (m.getParameterTypes()[0] != Object.class) {
                         throw new IllegalStateException(
                             "convertFromDef must take a single Object as an argument, " + "not [" + m.getParameterTypes()[0] + "]"

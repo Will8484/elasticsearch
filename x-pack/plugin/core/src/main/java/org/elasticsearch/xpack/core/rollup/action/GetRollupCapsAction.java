@@ -43,7 +43,7 @@ public class GetRollupCapsAction extends ActionType<GetRollupCapsAction.Response
         private String indexPattern;
 
         public Request(String indexPattern) {
-            if (Strings.isNullOrEmpty(indexPattern) || indexPattern.equals("*")) {
+            if (Strings.isNullOrEmpty(indexPattern) || "*".equals(indexPattern)) {
                 this.indexPattern = Metadata.ALL;
             } else {
                 this.indexPattern = indexPattern;

@@ -72,7 +72,7 @@ public class ElserMlNodeService implements InferenceService {
         // choose a default model version based on the cluster architecture
         if (serviceSettingsBuilder.getModelVariant() == null) {
             boolean homogenous = modelArchitectures.size() == 1;
-            if (homogenous && modelArchitectures.iterator().next().equals("linux-x86_64")) {
+            if (homogenous && "linux-x86_64".equals(modelArchitectures.iterator().next())) {
                 // Use the hardware optimized model
                 serviceSettingsBuilder.setModelVariant(ELSER_V2_MODEL_LINUX_X86);
             } else {

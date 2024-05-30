@@ -64,7 +64,7 @@ public record AutoExpandReplicas(int minReplicas, int maxReplicas, boolean enabl
             );
         }
         String sMax = value.substring(dash + 1);
-        if (sMax.equals(ALL_NODES_VALUE)) {
+        if (ALL_NODES_VALUE.equals(sMax)) {
             max = Integer.MAX_VALUE;
         } else {
             try {

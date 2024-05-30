@@ -289,11 +289,11 @@ public class GeoDistanceQueryBuilder extends AbstractQueryBuilder<GeoDistanceQue
                     if (token == XContentParser.Token.FIELD_NAME) {
                         currentName = parser.currentName();
                     } else if (token.isValue()) {
-                        if (currentName.equals("lat")) {
+                        if ("lat".equals(currentName)) {
                             point.resetLat(parser.doubleValue());
-                        } else if (currentName.equals("lon")) {
+                        } else if ("lon".equals(currentName)) {
                             point.resetLon(parser.doubleValue());
-                        } else if (currentName.equals("geohash")) {
+                        } else if ("geohash".equals(currentName)) {
                             point.resetFromGeoHash(parser.text());
                         } else {
                             throw new ParsingException(

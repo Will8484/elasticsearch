@@ -882,7 +882,7 @@ public class OsProbe {
     }
 
     boolean isDebian8() throws IOException {
-        return Constants.LINUX && getPrettyName().equals("Debian GNU/Linux 8 (jessie)");
+        return Constants.LINUX && "Debian GNU/Linux 8 (jessie)".equals(getPrettyName());
     }
 
     OsStats.Cgroup getCgroup(boolean isLinux) {

@@ -803,15 +803,15 @@ public final class ContextDocGenerator {
     }
 
     private static boolean isInternalClass(String javaName) {
-        return javaName.equals("org.elasticsearch.script.ScoreScript")
-            || javaName.equals("org.elasticsearch.xpack.sql.expression.function.scalar.geo.GeoShape")
-            || javaName.equals("org.elasticsearch.xpack.sql.expression.function.scalar.whitelist.InternalSqlScriptUtils")
-            || javaName.equals("org.elasticsearch.xpack.sql.expression.literal.IntervalDayTime")
-            || javaName.equals("org.elasticsearch.xpack.sql.expression.literal.IntervalYearMonth")
-            || javaName.equals("org.elasticsearch.xpack.eql.expression.function.scalar.whitelist.InternalEqlScriptUtils")
-            || javaName.equals("org.elasticsearch.xpack.ql.expression.function.scalar.InternalQlScriptUtils")
-            || javaName.equals("org.elasticsearch.xpack.ql.expression.function.scalar.whitelist.InternalQlScriptUtils")
-            || javaName.equals("org.elasticsearch.script.ScoreScript$ExplanationHolder");
+        return "org.elasticsearch.script.ScoreScript".equals(javaName)
+            || "org.elasticsearch.xpack.sql.expression.function.scalar.geo.GeoShape".equals(javaName)
+            || "org.elasticsearch.xpack.sql.expression.function.scalar.whitelist.InternalSqlScriptUtils".equals(javaName)
+            || "org.elasticsearch.xpack.sql.expression.literal.IntervalDayTime".equals(javaName)
+            || "org.elasticsearch.xpack.sql.expression.literal.IntervalYearMonth".equals(javaName)
+            || "org.elasticsearch.xpack.eql.expression.function.scalar.whitelist.InternalEqlScriptUtils".equals(javaName)
+            || "org.elasticsearch.xpack.ql.expression.function.scalar.InternalQlScriptUtils".equals(javaName)
+            || "org.elasticsearch.xpack.ql.expression.function.scalar.whitelist.InternalQlScriptUtils".equals(javaName)
+            || "org.elasticsearch.script.ScoreScript$ExplanationHolder".equals(javaName);
     }
 
     private ContextDocGenerator() {

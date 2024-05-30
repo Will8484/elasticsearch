@@ -89,7 +89,7 @@ public final class DefaultJdkTrustConfig implements SslTrustConfig {
     }
 
     private static boolean isPkcs11Truststore(BiFunction<String, String, String> systemProperties) {
-        return systemProperties.apply("javax.net.ssl.trustStoreType", "").equalsIgnoreCase("PKCS11");
+        return "PKCS11".equalsIgnoreCase(systemProperties.apply("javax.net.ssl.trustStoreType", ""));
     }
 
     private static char[] getSystemTrustStorePassword(BiFunction<String, String, String> systemProperties) {

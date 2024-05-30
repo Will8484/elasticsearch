@@ -32,7 +32,7 @@ class LicenseOverrides {
             MessageDigests.sha256().digest("12345678-abcd-0000-0000-000000000000".getBytes(StandardCharsets.UTF_8))
         );
 
-        assert TEST_LICENSE_ID_HASH.equals("d180f3dedf21b96eea4021d373ab990cba53eeb6c44832261417e828fcb278f1");
+        assert "d180f3dedf21b96eea4021d373ab990cba53eeb6c44832261417e828fcb278f1".equals(TEST_LICENSE_ID_HASH);
 
         ZonedDateTime EXPIRED = ZonedDateTime.ofStrict(LocalDateTime.of(1970, 1, 1, 0, 0, 42, 0), ZoneOffset.UTC, ZoneOffset.UTC);
         LICENSE_OVERRIDES = Map.<String, ZonedDateTime>ofEntries(

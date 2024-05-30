@@ -94,7 +94,7 @@ public class GenerateSnykDependencyGraph extends DefaultTask {
         SnykDependencyGraphBuilder builder = new SnykDependencyGraphBuilder(gradleVersion.get());
         String effectiveProjectPath = projectPath.get();
         builder.walkGraph(
-            (effectiveProjectPath.equals(":") ? projectName.get() : effectiveProjectPath),
+            (":".equals(effectiveProjectPath) ? projectName.get() : effectiveProjectPath),
             version.get(),
             firstLevelModuleDependencies
         );

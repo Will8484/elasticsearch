@@ -89,7 +89,7 @@ public record ActiveShardCount(int value) implements Writeable {
     public static ActiveShardCount parseString(final String str) {
         if (str == null) {
             return ActiveShardCount.DEFAULT;
-        } else if (str.equals("all")) {
+        } else if ("all".equals(str)) {
             return ActiveShardCount.ALL;
         } else {
             int val;

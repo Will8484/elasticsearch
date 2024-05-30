@@ -155,7 +155,7 @@ public class Types {
         if (elementType.equalsIgnoreCase(TypeName.BOOLEAN.toString())) {
             return BOOLEAN_BLOCK;
         }
-        if (elementType.equalsIgnoreCase("BYTES_REF")) {
+        if ("BYTES_REF".equalsIgnoreCase(elementType)) {
             return BYTES_REF_BLOCK;
         }
         if (elementType.equalsIgnoreCase(TypeName.INT.toString())) {
@@ -193,7 +193,7 @@ public class Types {
         if (elementType.equalsIgnoreCase(TypeName.BOOLEAN.toString())) {
             return BOOLEAN_VECTOR;
         }
-        if (elementType.equalsIgnoreCase("BYTES_REF")) {
+        if ("BYTES_REF".equalsIgnoreCase(elementType)) {
             return BYTES_REF_VECTOR;
         }
         if (elementType.equalsIgnoreCase(TypeName.INT.toString())) {

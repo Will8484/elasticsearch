@@ -32,7 +32,7 @@ public class FilterPath {
         this.isFinalNode = isFinalNode;
         this.termsChildren = Collections.unmodifiableMap(termsChildren);
         this.wildcardChildren = wildcardChildren;
-        this.isDoubleWildcard = pattern.equals(DOUBLE_WILDCARD);
+        this.isDoubleWildcard = DOUBLE_WILDCARD.equals(pattern);
     }
 
     public boolean hasDoubleWildcard() {

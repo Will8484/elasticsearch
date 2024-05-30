@@ -404,9 +404,9 @@ public class S3HttpHandler implements HttpHandler {
                 for (int childIndex = 0; childIndex < childNodes.getLength(); childIndex++) {
                     final var childNode = childNodes.item(childIndex);
                     if (childNode.getNodeType() == ELEMENT_NODE) {
-                        if (childNode.getNodeName().equals("ETag")) {
+                        if ("ETag".equals(childNode.getNodeName())) {
                             etag = childNode.getTextContent();
-                        } else if (childNode.getNodeName().equals("PartNumber")) {
+                        } else if ("PartNumber".equals(childNode.getNodeName())) {
                             partNumber = Integer.parseInt(childNode.getTextContent()) - 1;
                         }
                     }

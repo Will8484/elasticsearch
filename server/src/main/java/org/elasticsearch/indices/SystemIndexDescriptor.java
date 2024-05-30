@@ -920,7 +920,7 @@ public class SystemIndexDescriptor implements IndexPatternMatcher, Comparable<Sy
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             final String key = entry.getKey();
             final Object value = entry.getValue();
-            if (key.equals("dynamic") && (value instanceof Boolean) && ((Boolean) value)) {
+            if ("dynamic".equals(key) && (value instanceof Boolean) && ((Boolean) value)) {
                 return true;
             }
 

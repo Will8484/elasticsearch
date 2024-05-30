@@ -89,7 +89,7 @@ public class SwitchBetweenCheck extends AbstractCheck {
         final DetailAST argListAst = methodCallAst.findFirstToken(TokenTypes.ELIST);
         int min;
         int max;
-        if (switchMethodName.equals("randomInt")) {
+        if ("randomInt".equals(switchMethodName)) {
             if (argListAst.getChildCount() != 1) { // 1 arg
                 return;
             }
@@ -139,7 +139,7 @@ public class SwitchBetweenCheck extends AbstractCheck {
             try {
                 int value = Integer.parseInt(exprAst.getFirstChild().getText());
                 if (value < min || value > max) {
-                    if (switchMethodName.equals("randomInt")) {
+                    if ("randomInt".equals(switchMethodName)) {
                         log(caseAst, SWITCH_RANDOM_INT_MSG_KEY, value, switchMethodName, max);
                     } else {
                         log(caseAst, SWITCH_BETWEEN_MSG_KEY, value, switchMethodName, min, max);

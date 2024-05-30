@@ -874,7 +874,7 @@ public class Cron implements ToXContentFragment {
             return i;
         }
         char c = s.charAt(i);
-        if ((c >= 'A') && (c <= 'Z') && (s.equals("L") == false) && (s.equals("LW") == false) && (s.matches("^L-[0-9]*[W]?") == false)) {
+        if ((c >= 'A') && (c <= 'Z') && ("L".equals(s) == false) && ("LW".equals(s) == false) && (s.matches("^L-[0-9]*[W]?") == false)) {
             String sub = s.substring(i, i + 3);
             int sval = -1;
             int eval = -1;

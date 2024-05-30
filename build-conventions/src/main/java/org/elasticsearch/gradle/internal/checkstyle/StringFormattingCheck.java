@@ -62,7 +62,7 @@ public class StringFormattingCheck extends AbstractCheck {
         }
 
         final String methodName = dotAst.findFirstToken(TokenTypes.IDENT).getText();
-        if (methodName.equals("formatted") == false) {
+        if ("formatted".equals(methodName) == false) {
             return;
         }
 

@@ -392,7 +392,7 @@ public final class PemUtils {
 
         final EncryptedPrivateKeyInfo encryptedPrivateKeyInfo = getEncryptedPrivateKeyInfo(keyBytes);
         String algorithm = encryptedPrivateKeyInfo.getAlgName();
-        if (algorithm.equals("PBES2") || algorithm.equals("1.2.840.113549.1.5.13")) {
+        if ("PBES2".equals(algorithm) || "1.2.840.113549.1.5.13".equals(algorithm)) {
             algorithm = getPBES2Algorithm(encryptedPrivateKeyInfo);
         }
         SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance(algorithm);

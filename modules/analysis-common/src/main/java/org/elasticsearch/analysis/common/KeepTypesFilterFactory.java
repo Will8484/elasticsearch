@@ -50,9 +50,9 @@ public class KeepTypesFilterFactory extends AbstractTokenFilterFactory {
 
         private static KeepTypesMode fromString(String modeString) {
             String lc = modeString.toLowerCase(Locale.ROOT);
-            if (lc.equals("include")) {
+            if ("include".equals(lc)) {
                 return INCLUDE;
-            } else if (lc.equals("exclude")) {
+            } else if ("exclude".equals(lc)) {
                 return EXCLUDE;
             } else {
                 throw new IllegalArgumentException(

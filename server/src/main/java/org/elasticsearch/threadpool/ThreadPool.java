@@ -307,7 +307,7 @@ public class ThreadPool implements ReportingService<ThreadPoolInfo>, Scheduler {
 
         final List<Info> infos = executors.values()
             .stream()
-            .filter(holder -> holder.info.getName().equals("same") == false)
+            .filter(holder -> "same".equals(holder.info.getName()) == false)
             .map(holder -> holder.info)
             .toList();
         this.threadPoolInfo = new ThreadPoolInfo(infos);
@@ -992,8 +992,8 @@ public class ThreadPool implements ReportingService<ThreadPoolInfo>, Scheduler {
     public static boolean assertCurrentMethodIsNotCalledRecursively() {
         final StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         assert stackTraceElements.length >= 3 : stackTraceElements.length;
-        assert stackTraceElements[0].getMethodName().equals("getStackTrace") : stackTraceElements[0];
-        assert stackTraceElements[1].getMethodName().equals("assertCurrentMethodIsNotCalledRecursively") : stackTraceElements[1];
+        assert "getStackTrace".equals(stackTraceElements[0].getMethodName()) : stackTraceElements[0];
+        assert "assertCurrentMethodIsNotCalledRecursively".equals(stackTraceElements[1].getMethodName()) : stackTraceElements[1];
         final StackTraceElement testingMethod = stackTraceElements[2];
         for (int i = 3; i < stackTraceElements.length; i++) {
             assert stackTraceElements[i].getClassName().equals(testingMethod.getClassName()) == false

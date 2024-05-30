@@ -175,7 +175,7 @@ public final class RepositoryData {
         this.shardGenerations = shardGenerations;
         this.indexMetaDataGenerations = indexMetaDataGenerations;
         this.clusterUUID = Objects.requireNonNull(clusterUUID);
-        assert uuid.equals(MISSING_UUID) == clusterUUID.equals(MISSING_UUID)
+        assert MISSING_UUID.equals(uuid) == MISSING_UUID.equals(clusterUUID)
             : "Either repository- and cluster UUID must both be missing"
                 + " or neither of them must be missing but saw ["
                 + uuid
@@ -498,9 +498,9 @@ public final class RepositoryData {
     }
 
     public RepositoryData withClusterUuid(String clusterUUID) {
-        assert clusterUUID.equals(MISSING_UUID) == false;
+        assert MISSING_UUID.equals(clusterUUID) == false;
         return new RepositoryData(
-            uuid.equals(MISSING_UUID) ? UUIDs.randomBase64UUID() : uuid,
+            MISSING_UUID.equals(uuid) ? UUIDs.randomBase64UUID() : uuid,
             genId,
             snapshotIds,
             snapshotsDetails,
@@ -725,7 +725,7 @@ public final class RepositoryData {
         }
 
         if (shouldWriteUUIDS) {
-            if (uuid.equals(MISSING_UUID)) {
+            if (MISSING_UUID.equals(uuid)) {
                 if (permitMissingUuid == false) {
                     assert false : "missing uuid";
                     throw new IllegalStateException("missing uuid");
@@ -733,7 +733,7 @@ public final class RepositoryData {
             } else {
                 builder.field(UUID, uuid);
             }
-            if (clusterUUID.equals(MISSING_UUID)) {
+            if (MISSING_UUID.equals(clusterUUID)) {
                 if (permitMissingUuid == false) {
                     assert false : "missing clusterUUID";
                     throw new IllegalStateException("missing clusterUUID");
@@ -742,12 +742,12 @@ public final class RepositoryData {
                 builder.field(CLUSTER_UUID, clusterUUID);
             }
         } else {
-            if (uuid.equals(MISSING_UUID) == false) {
+            if (MISSING_UUID.equals(uuid) == false) {
                 final IllegalStateException e = new IllegalStateException("lost uuid + [" + uuid + "]");
                 assert false : e;
                 throw e;
             }
-            if (clusterUUID.equals(MISSING_UUID) == false) {
+            if (MISSING_UUID.equals(clusterUUID) == false) {
                 final IllegalStateException e = new IllegalStateException("lost clusterUUID + [" + uuid + "]");
                 assert false : e;
                 throw e;
@@ -900,12 +900,12 @@ public final class RepositoryData {
                 case UUID -> {
                     XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_STRING, parser.nextToken(), parser);
                     uuid = parser.text();
-                    assert uuid.equals(MISSING_UUID) == false;
+                    assert MISSING_UUID.equals(uuid) == false;
                 }
                 case CLUSTER_UUID -> {
                     XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_STRING, parser.nextToken(), parser);
                     clusterUUID = parser.text();
-                    assert clusterUUID.equals(MISSING_UUID) == false;
+                    assert MISSING_UUID.equals(clusterUUID) == false;
                 }
                 default -> XContentParserUtils.throwUnknownField(field, parser);
             }

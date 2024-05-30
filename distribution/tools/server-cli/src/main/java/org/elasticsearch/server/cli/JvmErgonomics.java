@@ -88,7 +88,7 @@ final class JvmErgonomics {
      *                               and {@code optionName} is not in the final JVM options.
      */
     private static boolean usingG1GcWithoutCommandLineOriginOption(Map<String, JvmOption> finalJvmOptions, String optionName) {
-        return getRequiredOption(finalJvmOptions, "UseG1GC").getMandatoryValue().equals("true")
+        return "true".equals(getRequiredOption(finalJvmOptions, "UseG1GC").getMandatoryValue())
             && getRequiredOption(finalJvmOptions, optionName).isCommandLineOrigin() == false;
     }
 

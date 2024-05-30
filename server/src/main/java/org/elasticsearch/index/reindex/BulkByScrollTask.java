@@ -639,13 +639,13 @@ public class BulkByScrollTask extends CancellableTask {
                 if (token == Token.FIELD_NAME) {
                     fieldName = parser.currentName();
                 } else if (token == Token.START_OBJECT) {
-                    if (fieldName.equals(Status.RETRIES_FIELD)) {
+                    if (Status.RETRIES_FIELD.equals(fieldName)) {
                         builder.setRetries(Status.RETRIES_PARSER.parse(parser, null));
                     } else {
                         parser.skipChildren();
                     }
                 } else if (token == Token.START_ARRAY) {
-                    if (fieldName.equals(Status.SLICES_FIELD)) {
+                    if (Status.SLICES_FIELD.equals(fieldName)) {
                         while ((token = parser.nextToken()) != Token.END_ARRAY) {
                             builder.addToSliceStatuses(StatusOrException.fromXContent(parser));
                         }

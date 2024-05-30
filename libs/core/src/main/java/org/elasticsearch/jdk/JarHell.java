@@ -143,7 +143,7 @@ public class JarHell {
             }
             // now just parse as ordinary file
             try {
-                if (element.equals("/")) {
+                if ("/".equals(element)) {
                     // Eclipse adds this to the classpath when running unit tests...
                     continue;
                 }
@@ -283,7 +283,7 @@ public class JarHell {
     }
 
     private static void checkClass(Map<String, Path> clazzes, String clazz, Path jarpath) {
-        if (clazz.equals("module-info") || clazz.endsWith(".module-info")) {
+        if ("module-info".equals(clazz) || clazz.endsWith(".module-info")) {
             // Ignore jigsaw module descriptions
             return;
         }

@@ -211,17 +211,17 @@ public class TokenCountFieldMapperIntegrationIT extends ESIntegTestCase {
         assertThat(foundIds, containsInAnyOrder(ids));
         for (SearchHit hit : result.getHits()) {
             String id = hit.getId();
-            if (id.equals("single")) {
+            if ("single".equals(id)) {
                 assertSearchHit(hit, new int[] { 4 }, new int[] { 4 });
-            } else if (id.equals("bulk1")) {
+            } else if ("bulk1".equals(id)) {
                 assertSearchHit(hit, new int[] { 3 }, new int[] { 3 });
-            } else if (id.equals("bulk2")) {
+            } else if ("bulk2".equals(id)) {
                 assertSearchHit(hit, new int[] { 5 }, new int[] { 4 });
-            } else if (id.equals("multi")) {
+            } else if ("multi".equals(id)) {
                 assertSearchHit(hit, new int[] { 2, 7 }, new int[] { 2, 7 });
-            } else if (id.equals("multibulk1")) {
+            } else if ("multibulk1".equals(id)) {
                 assertSearchHit(hit, new int[] { 1, 8 }, new int[] { 1, 8 });
-            } else if (id.equals("multibulk2")) {
+            } else if ("multibulk2".equals(id)) {
                 assertSearchHit(hit, new int[] { 6, 10 }, new int[] { 3, 9 });
             } else {
                 throw new ElasticsearchException("Unexpected response!");

@@ -186,7 +186,7 @@ public abstract class GenericPointParser<T> {
                 return fromGeohash.apply(geohash);
             }
             if (coordinates != null) {
-                if (geojsonType == null || geojsonType.toLowerCase(Locale.ROOT).equals("point") == false) {
+                if (geojsonType == null || "point".equals(geojsonType.toLowerCase(Locale.ROOT)) == false) {
                     throw new ElasticsearchParseException("[type] for {} can only be 'Point'", mapType);
                 }
                 if (coordinates.size() < 2) {

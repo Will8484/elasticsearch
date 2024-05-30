@@ -99,7 +99,7 @@ public class JdkDownloadPlugin implements Plugin<Project> {
 
         if (jdk.getVendor().equals(VENDOR_ADOPTIUM)) {
             repoUrl = "https://api.adoptium.net/v3/binary/version/";
-            if (jdk.getMajor().equals("8")) {
+            if ("8".equals(jdk.getMajor())) {
                 // legacy pattern for JDK 8
                 artifactPattern = "jdk"
                     + jdk.getBaseVersion()
@@ -135,7 +135,7 @@ public class JdkDownloadPlugin implements Plugin<Project> {
             }
         } else if (jdk.getVendor().equals(VENDOR_ZULU)) {
             repoUrl = "https://cdn.azul.com";
-            if (jdk.getMajor().equals("8") && isJdkOnMacOsPlatform(jdk) && jdk.getArchitecture().equals("aarch64")) {
+            if ("8".equals(jdk.getMajor()) && isJdkOnMacOsPlatform(jdk) && "aarch64".equals(jdk.getArchitecture())) {
                 artifactPattern = "zulu/bin/zulu"
                     + jdk.getDistributionVersion()
                     + "-ca-jdk"
@@ -167,12 +167,12 @@ public class JdkDownloadPlugin implements Plugin<Project> {
 
     private static String dependencyNotation(Jdk jdk) {
         String platformDep = isJdkOnMacOsPlatform(jdk) ? (jdk.getVendor().equals(VENDOR_ADOPTIUM) ? "mac" : "macos") : jdk.getPlatform();
-        String extension = jdk.getPlatform().equals("windows") ? "zip" : "tar.gz";
+        String extension = "windows".equals(jdk.getPlatform()) ? "zip" : "tar.gz";
         return groupName(jdk) + ":" + platformDep + ":" + jdk.getBaseVersion() + ":" + jdk.getArchitecture() + "@" + extension;
     }
 
     private static boolean isJdkOnMacOsPlatform(Jdk jdk) {
-        return jdk.getPlatform().equals("darwin") || jdk.getPlatform().equals("mac");
+        return "darwin".equals(jdk.getPlatform()) || "mac".equals(jdk.getPlatform());
     }
 
     private static String groupName(Jdk jdk) {

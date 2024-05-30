@@ -159,19 +159,19 @@ public class AzureBlobStore implements BlobStore {
     }
 
     private static boolean isListRequest(String httpMethod, URL url) {
-        return httpMethod.equals("GET") && url.getQuery() != null && url.getQuery().contains("comp=list");
+        return "GET".equals(httpMethod) && url.getQuery() != null && url.getQuery().contains("comp=list");
     }
 
     // https://docs.microsoft.com/en-us/rest/api/storageservices/put-block
     private static boolean isPutBlockRequest(String httpMethod, URL url) {
         String queryParams = url.getQuery() == null ? "" : url.getQuery();
-        return httpMethod.equals("PUT") && queryParams.contains("comp=block") && queryParams.contains("blockid=");
+        return "PUT".equals(httpMethod) && queryParams.contains("comp=block") && queryParams.contains("blockid=");
     }
 
     // https://docs.microsoft.com/en-us/rest/api/storageservices/put-block-list
     private static boolean isPutBlockListRequest(String httpMethod, URL url) {
         String queryParams = url.getQuery() == null ? "" : url.getQuery();
-        return httpMethod.equals("PUT") && queryParams.contains("comp=blocklist");
+        return "PUT".equals(httpMethod) && queryParams.contains("comp=blocklist");
     }
 
     public long getReadChunkSize() {

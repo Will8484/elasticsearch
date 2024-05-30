@@ -195,7 +195,7 @@ public class SettingsModule implements Module {
     // module
     private static boolean isS3InsecureCredentials(Setting<?> setting) {
         final String settingKey = setting.getKey();
-        return settingKey.equals("access_key") || settingKey.equals("secret_key");
+        return "access_key".equals(settingKey) || "secret_key".equals(settingKey);
     }
 
     /**

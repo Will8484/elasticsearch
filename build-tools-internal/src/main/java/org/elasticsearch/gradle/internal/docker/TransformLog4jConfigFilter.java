@@ -81,14 +81,14 @@ public class TransformLog4jConfigFilter extends FilterReader {
                 // We don't need to explicitly define a console appender because the
                 // "rolling" appender will become a console appender. We also don't
                 // carry over "*_old" appenders
-                if (keyParts[1].equals("console") || keyParts[1].endsWith("_old")) {
+                if ("console".equals(keyParts[1]) || keyParts[1].endsWith("_old")) {
                     skipNext = line.endsWith("\\");
                     continue;
                 }
 
                 switch (keyParts[2]) {
                     case "type" -> {
-                        if (value.equals("RollingFile")) {
+                        if ("RollingFile".equals(value)) {
                             value = "Console";
                         }
                         line = key + " = " + value;
@@ -103,7 +103,7 @@ public class TransformLog4jConfigFilter extends FilterReader {
                 String[] parts = line.split("\\s*=\\s*");
 
                 // The root logger only needs this appender
-                if (parts[1].equals("rolling") == false) {
+                if ("rolling".equals(parts[1]) == false) {
                     skipNext = line.endsWith("\\");
                     continue;
                 }
@@ -112,7 +112,7 @@ public class TransformLog4jConfigFilter extends FilterReader {
                 String key = parts[0];
                 String[] keyParts = key.split("\\.");
 
-                if (keyParts[2].equals("appenderRef") && keyParts[3].endsWith("_old")) {
+                if ("appenderRef".equals(keyParts[2]) && keyParts[3].endsWith("_old")) {
                     skipNext = line.endsWith("\\");
                     continue;
                 }

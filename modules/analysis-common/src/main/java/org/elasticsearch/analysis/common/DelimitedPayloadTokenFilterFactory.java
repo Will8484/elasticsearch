@@ -40,11 +40,11 @@ public class DelimitedPayloadTokenFilterFactory extends AbstractTokenFilterFacto
         }
 
         if (settings.get(ENCODING) != null) {
-            if (settings.get(ENCODING).equals("float")) {
+            if ("float".equals(settings.get(ENCODING))) {
                 encoder = new FloatEncoder();
-            } else if (settings.get(ENCODING).equals("int")) {
+            } else if ("int".equals(settings.get(ENCODING))) {
                 encoder = new IntegerEncoder();
-            } else if (settings.get(ENCODING).equals("identity")) {
+            } else if ("identity".equals(settings.get(ENCODING))) {
                 encoder = new IdentityEncoder();
             } else {
                 encoder = DEFAULT_ENCODER;

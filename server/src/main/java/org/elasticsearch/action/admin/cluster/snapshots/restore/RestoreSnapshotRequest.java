@@ -517,7 +517,7 @@ public class RestoreSnapshotRequest extends MasterNodeRequest<RestoreSnapshotReq
     public RestoreSnapshotRequest source(Map<String, Object> source) {
         for (Map.Entry<String, Object> entry : source.entrySet()) {
             String name = entry.getKey();
-            if (name.equals("indices")) {
+            if ("indices".equals(name)) {
                 if (entry.getValue() instanceof String) {
                     indices(Strings.splitStringByCommaToArray((String) entry.getValue()));
                 } else if (entry.getValue() instanceof ArrayList) {
@@ -525,36 +525,36 @@ public class RestoreSnapshotRequest extends MasterNodeRequest<RestoreSnapshotReq
                 } else {
                     throw new IllegalArgumentException("malformed indices section, should be an array of strings");
                 }
-            } else if (name.equals("feature_states")) {
+            } else if ("feature_states".equals(name)) {
                 if (entry.getValue() instanceof List) {
                     featureStates((List<String>) entry.getValue());
                 } else {
                     throw new IllegalArgumentException("malformed feature_states section, should be an array of strings");
                 }
-            } else if (name.equals("partial")) {
+            } else if ("partial".equals(name)) {
                 partial(nodeBooleanValue(entry.getValue(), "partial"));
-            } else if (name.equals("include_global_state")) {
+            } else if ("include_global_state".equals(name)) {
                 includeGlobalState = nodeBooleanValue(entry.getValue(), "include_global_state");
-            } else if (name.equals("include_aliases")) {
+            } else if ("include_aliases".equals(name)) {
                 includeAliases = nodeBooleanValue(entry.getValue(), "include_aliases");
-            } else if (name.equals("rename_pattern")) {
+            } else if ("rename_pattern".equals(name)) {
                 if (entry.getValue() instanceof String) {
                     renamePattern((String) entry.getValue());
                 } else {
                     throw new IllegalArgumentException("malformed rename_pattern");
                 }
-            } else if (name.equals("rename_replacement")) {
+            } else if ("rename_replacement".equals(name)) {
                 if (entry.getValue() instanceof String) {
                     renameReplacement((String) entry.getValue());
                 } else {
                     throw new IllegalArgumentException("malformed rename_replacement");
                 }
-            } else if (name.equals("index_settings")) {
+            } else if ("index_settings".equals(name)) {
                 if ((entry.getValue() instanceof Map) == false) {
                     throw new IllegalArgumentException("malformed index_settings section");
                 }
                 indexSettings((Map<String, Object>) entry.getValue());
-            } else if (name.equals("ignore_index_settings")) {
+            } else if ("ignore_index_settings".equals(name)) {
                 if (entry.getValue() instanceof String) {
                     ignoreIndexSettings(Strings.splitStringByCommaToArray((String) entry.getValue()));
                 } else if (entry.getValue() instanceof List) {

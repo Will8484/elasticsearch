@@ -132,12 +132,12 @@ public class WordDelimiterTokenFilterFactory extends AbstractTokenFilterFactory 
     }
 
     private static Byte parseType(String s) {
-        if (s.equals("LOWER")) return WordDelimiterFilter.LOWER;
-        else if (s.equals("UPPER")) return WordDelimiterFilter.UPPER;
-        else if (s.equals("ALPHA")) return WordDelimiterFilter.ALPHA;
-        else if (s.equals("DIGIT")) return WordDelimiterFilter.DIGIT;
-        else if (s.equals("ALPHANUM")) return WordDelimiterFilter.ALPHANUM;
-        else if (s.equals("SUBWORD_DELIM")) return WordDelimiterFilter.SUBWORD_DELIM;
+        if ("LOWER".equals(s)) return WordDelimiterFilter.LOWER;
+        else if ("UPPER".equals(s)) return WordDelimiterFilter.UPPER;
+        else if ("ALPHA".equals(s)) return WordDelimiterFilter.ALPHA;
+        else if ("DIGIT".equals(s)) return WordDelimiterFilter.DIGIT;
+        else if ("ALPHANUM".equals(s)) return WordDelimiterFilter.ALPHANUM;
+        else if ("SUBWORD_DELIM".equals(s)) return WordDelimiterFilter.SUBWORD_DELIM;
         else return null;
     }
 

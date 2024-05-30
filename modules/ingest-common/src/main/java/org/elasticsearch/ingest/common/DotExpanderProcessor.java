@@ -48,7 +48,7 @@ public final class DotExpanderProcessor extends AbstractProcessor {
             map = ingestDocument.getSourceAndMetadata();
         }
 
-        if (this.field.equals("*")) {
+        if ("*".equals(this.field)) {
             for (String key : new ArrayList<>(map.keySet())) {
                 if (key.indexOf('.') > 0) {
                     pathToExpand = this.path != null ? this.path + "." + key : key;
@@ -122,7 +122,7 @@ public final class DotExpanderProcessor extends AbstractProcessor {
             Map<String, Object> config
         ) throws Exception {
             String field = ConfigurationUtils.readStringProperty(TYPE, tag, config, "field");
-            if (field.contains(".") == false && field.equals("*") == false) {
+            if (field.contains(".") == false && "*".equals(field) == false) {
                 throw ConfigurationUtils.newConfigurationException(
                     ConfigurationUtils.TAG_KEY,
                     tag,

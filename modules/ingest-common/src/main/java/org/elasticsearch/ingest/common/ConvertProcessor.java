@@ -80,9 +80,9 @@ public final class ConvertProcessor extends AbstractProcessor {
         BOOLEAN {
             @Override
             public Object convert(Object value) {
-                if (value.toString().equalsIgnoreCase("true")) {
+                if ("true".equalsIgnoreCase(value.toString())) {
                     return true;
-                } else if (value.toString().equalsIgnoreCase("false")) {
+                } else if ("false".equalsIgnoreCase(value.toString())) {
                     return false;
                 } else {
                     throw new IllegalArgumentException("[" + value + "] is not a boolean value, cannot convert to boolean");

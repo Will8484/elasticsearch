@@ -80,7 +80,7 @@ public class DataTier {
 
     static {
         for (String tier : ALL_DATA_TIERS) {
-            assert tier.equals(DATA_FROZEN) || tier.contains(DATA_FROZEN) == false
+            assert DATA_FROZEN.equals(tier) || tier.contains(DATA_FROZEN) == false
                 : "can't have two tier names containing ["
                     + DATA_FROZEN
                     + "] because it would break setting validation optimizations"
@@ -100,7 +100,7 @@ public class DataTier {
         final Map<String, Settings> tmpSettings = new HashMap<>();
         for (int i = 0, ordered_frozen_to_hot_tiersSize = ORDERED_FROZEN_TO_HOT_TIERS.size(); i < ordered_frozen_to_hot_tiersSize; i++) {
             String tier = ORDERED_FROZEN_TO_HOT_TIERS.get(i);
-            if (tier.equals(DATA_FROZEN)) {
+            if (DATA_FROZEN.equals(tier)) {
                 tmp.put(tier, DATA_FROZEN);
                 tmpSettings.put(DATA_FROZEN, Settings.builder().put(DataTier.TIER_PREFERENCE, DATA_FROZEN).build());
             } else {
@@ -192,10 +192,10 @@ public class DataTier {
      * If invalid tier names are passed the result is non-deterministic.
      */
     public static int compare(String tier1, String tier2) {
-        if (tier1.equals(DATA_CONTENT)) {
+        if (DATA_CONTENT.equals(tier1)) {
             tier1 = DATA_HOT;
         }
-        if (tier2.equals(DATA_CONTENT)) {
+        if (DATA_CONTENT.equals(tier2)) {
             tier2 = DATA_HOT;
         }
         int indexOfTier1 = ORDERED_FROZEN_TO_HOT_TIERS.indexOf(tier1);

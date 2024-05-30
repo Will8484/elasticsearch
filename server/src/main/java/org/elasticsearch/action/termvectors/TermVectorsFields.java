@@ -125,7 +125,7 @@ public final class TermVectorsFields extends Fields {
         try (StreamInput header = headerRef.streamInput()) {
             // here we read the header to fill the field offset map
             String headerString = header.readString();
-            assert headerString.equals("TV");
+            assert "TV".equals(headerString);
             int version = header.readInt();
             assert version == -1;
             hasTermStatistic = header.readBoolean();

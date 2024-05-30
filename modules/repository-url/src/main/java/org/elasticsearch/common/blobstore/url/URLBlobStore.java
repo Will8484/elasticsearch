@@ -61,7 +61,7 @@ public class URLBlobStore implements BlobStore {
         this.bufferSizeInBytes = (int) BUFFER_SIZE_SETTING.get(settings).getBytes();
 
         final String protocol = this.path.getProtocol();
-        if (protocol.equals("http") || protocol.equals("https")) {
+        if ("http".equals(protocol) || "https".equals(protocol)) {
             this.blobContainerFactory = (blobPath) -> new HttpURLBlobContainer(
                 this,
                 blobPath,
@@ -69,7 +69,7 @@ public class URLBlobStore implements BlobStore {
                 httpClient,
                 httpClientSettings
             );
-        } else if (protocol.equals("file")) {
+        } else if ("file".equals(protocol)) {
             this.blobContainerFactory = (blobPath) -> new FileURLBlobContainer(this, blobPath, buildPath(blobPath));
         } else {
             this.blobContainerFactory = (blobPath) -> new URLBlobContainer(this, blobPath, buildPath(blobPath));

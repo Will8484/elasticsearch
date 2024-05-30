@@ -377,7 +377,7 @@ public class Translog extends AbstractIndexShardComponent implements IndexShardC
             }). // find all inner callers including Translog subclasses
             toList();
         // the list of inner callers should be either empty or should contain closeOnTragicEvent method
-        return frames.isEmpty() || frames.stream().anyMatch(f -> f.getMethodName().equals("closeOnTragicEvent"));
+        return frames.isEmpty() || frames.stream().anyMatch(f -> "closeOnTragicEvent".equals(f.getMethodName()));
     }
 
     @Override

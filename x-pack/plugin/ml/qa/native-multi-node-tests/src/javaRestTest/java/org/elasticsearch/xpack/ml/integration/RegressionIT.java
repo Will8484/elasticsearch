@@ -337,7 +337,7 @@ public class RegressionIT extends MlNativeDataFrameAnalyticsIntegTestCase {
             response = startAnalytics(jobId);
             assertThat(response.getNode(), not(emptyString()));
         } catch (Exception e) {
-            if (e.getMessage().equals("Cannot start because the job has already finished")) {
+            if ("Cannot start because the job has already finished".equals(e.getMessage())) {
                 // That means the job had managed to complete
             } else {
                 throw e;

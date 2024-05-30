@@ -96,7 +96,7 @@ public class HttpStatsIT extends HttpSmokeTestCase {
             assertThat(route, jsonMapView.get("http.routes." + route + ".requests.size_histogram"), hasSize(1));
             assertThat(route, jsonMapView.get("http.routes." + route + ".requests.size_histogram.0.count"), equalTo(1));
             assertThat(route, jsonMapView.get("http.routes." + route + ".requests.size_histogram.0.lt_bytes"), notNullValue());
-            if (route.equals("/{index}/_search")) {
+            if ("/{index}/_search".equals(route)) {
                 assertThat(route, jsonMapView.get("http.routes." + route + ".requests.size_histogram.0.ge_bytes"), notNullValue());
             }
             assertThat(route, jsonMapView.get("http.routes." + route + ".responses.size_histogram"), hasSize(1));

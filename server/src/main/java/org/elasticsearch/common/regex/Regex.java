@@ -40,7 +40,7 @@ public class Regex {
     }
 
     public static boolean isMatchAllPattern(String str) {
-        return str.equals("*");
+        return "*".equals(str);
     }
 
     public static boolean isSuffixMatchPattern(String str) {

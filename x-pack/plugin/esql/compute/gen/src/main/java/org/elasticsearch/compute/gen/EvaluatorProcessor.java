@@ -144,7 +144,7 @@ public class EvaluatorProcessor implements Processor {
                 || annotationType.equals(ConvertEvaluator.class.getName())) {
 
                 for (var e : mirror.getElementValues().entrySet()) {
-                    if (false == e.getKey().getSimpleName().toString().equals("warnExceptions")) {
+                    if (false == "warnExceptions".equals(e.getKey().getSimpleName().toString())) {
                         continue;
                     }
                     for (var v : (List<?>) e.getValue().getValue()) {

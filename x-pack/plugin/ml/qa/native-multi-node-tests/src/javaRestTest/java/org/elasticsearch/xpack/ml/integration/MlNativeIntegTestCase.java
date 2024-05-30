@@ -476,7 +476,7 @@ abstract class MlNativeIntegTestCase extends ESIntegTestCase {
             if (context.instanceClazz.equals(ScoreScript.class)) {
                 return context.factoryClazz.cast(new MockScoreScript(MockDeterministicScript.asDeterministic(p -> 0.0)));
             }
-            if (context.name.equals("ingest")) {
+            if ("ingest".equals(context.name)) {
                 IngestScript.Factory factory = (params, ctx) -> new IngestScript(params, ctx) {
                     @Override
                     public void execute() {}

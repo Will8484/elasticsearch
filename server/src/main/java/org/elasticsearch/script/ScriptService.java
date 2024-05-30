@@ -88,7 +88,7 @@ public class ScriptService implements Closeable, ClusterStateApplier, ScriptComp
     public static final Setting<ScriptCache.CompilationRate> SCRIPT_GENERAL_MAX_COMPILATIONS_RATE_SETTING = new Setting<>(
         "script.max_compilations_rate",
         "150/5m",
-        (String value) -> value.equals(USE_CONTEXT_RATE_KEY) ? USE_CONTEXT_RATE_VALUE : new ScriptCache.CompilationRate(value),
+        (String value) -> USE_CONTEXT_RATE_KEY.equals(value) ? USE_CONTEXT_RATE_VALUE : new ScriptCache.CompilationRate(value),
         Property.Dynamic,
         Property.NodeScope
     );
@@ -143,7 +143,7 @@ public class ScriptService implements Closeable, ClusterStateApplier, ScriptComp
         key -> new Setting<ScriptCache.CompilationRate>(
             key,
             "75/5m",
-            (String value) -> value.equals(UNLIMITED_COMPILATION_RATE_KEY)
+            (String value) -> UNLIMITED_COMPILATION_RATE_KEY.equals(value)
                 ? ScriptCache.UNLIMITED_COMPILATION_RATE
                 : new ScriptCache.CompilationRate(value),
             Property.NodeScope,

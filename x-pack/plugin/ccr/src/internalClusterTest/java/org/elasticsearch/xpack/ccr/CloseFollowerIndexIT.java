@@ -45,10 +45,10 @@ public class CloseFollowerIndexIT extends CcrIntegTestCase {
         AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
             Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
                 if (t.getThreadGroup().getName().contains(getTestClass().getSimpleName())
-                    && t.getName().equals("elasticsearch-error-rethrower")) {
+                    && "elasticsearch-error-rethrower".equals(t.getName())) {
                     for (StackTraceElement element : e.getStackTrace()) {
                         if (element.getClassName().equals(ReadOnlyEngine.class.getName())) {
-                            if (element.getMethodName().equals("assertMaxSeqNoEqualsToGlobalCheckpoint")) {
+                            if ("assertMaxSeqNoEqualsToGlobalCheckpoint".equals(element.getMethodName())) {
                                 logger.error("HACK: suppressing uncaught exception thrown from assertMaxSeqNoEqualsToGlobalCheckpoint", e);
                                 return;
                             }

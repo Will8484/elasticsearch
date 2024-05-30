@@ -172,7 +172,7 @@ public class NodeEnvironmentIT extends ESIntegTestCase {
                     for (Path subPath : stream) {
                         String fileName = subPath.getFileName().toString();
                         Path targetSubPath = targetPath.resolve(fileName);
-                        if (fileName.equals("nodes") == false) {
+                        if ("nodes".equals(fileName) == false) {
                             Files.move(subPath, targetSubPath, StandardCopyOption.ATOMIC_MOVE);
                         }
                     }

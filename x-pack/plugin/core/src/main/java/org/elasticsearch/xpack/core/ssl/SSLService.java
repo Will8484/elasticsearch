@@ -557,7 +557,7 @@ public class SSLService {
     }
 
     private static Function<KeyStore, KeyStore> getKeyStoreFilter(String sslContext) {
-        if (sslContext.equals("xpack.security.http.ssl")) {
+        if ("xpack.security.http.ssl".equals(sslContext)) {
             final Function<GeneralSecurityException, RuntimeException> exceptionHandler = e -> new ElasticsearchSecurityException(
                 "Cannot process keystore for SSL configuration [" + sslContext + "] - " + e.getMessage(),
                 e

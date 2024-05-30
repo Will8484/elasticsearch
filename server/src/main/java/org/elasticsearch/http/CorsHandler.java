@@ -421,7 +421,7 @@ public class CorsHandler {
         final CorsHandler.Config.Builder builder;
         if (Strings.isNullOrEmpty(origin)) {
             builder = CorsHandler.Config.Builder.forOrigins();
-        } else if (origin.equals(CorsHandler.ANY_ORIGIN)) {
+        } else if (CorsHandler.ANY_ORIGIN.equals(origin)) {
             builder = CorsHandler.Config.Builder.forAnyOrigin();
         } else {
             try {

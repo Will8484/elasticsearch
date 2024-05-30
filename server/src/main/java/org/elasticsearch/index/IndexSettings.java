@@ -286,7 +286,7 @@ public final class IndexSettings {
     public static TimeValue STATELESS_DEFAULT_REFRESH_INTERVAL = TimeValue.timeValueSeconds(15); // TODO: this value is still not final
     public static TimeValue STATELESS_MIN_NON_FAST_REFRESH_INTERVAL = TimeValue.timeValueSeconds(5);
     public static final Setting<TimeValue> INDEX_REFRESH_INTERVAL_SETTING = Setting.timeSetting("index.refresh_interval", (settings) -> {
-        if (EXISTING_SHARDS_ALLOCATOR_SETTING.get(settings).equals("stateless") && INDEX_FAST_REFRESH_SETTING.get(settings) == false) {
+        if ("stateless".equals(EXISTING_SHARDS_ALLOCATOR_SETTING.get(settings)) && INDEX_FAST_REFRESH_SETTING.get(settings) == false) {
             return STATELESS_DEFAULT_REFRESH_INTERVAL;
         }
         return DEFAULT_REFRESH_INTERVAL;
@@ -302,7 +302,7 @@ public final class IndexSettings {
             final Boolean fastRefresh = (Boolean) settings.get(INDEX_FAST_REFRESH_SETTING);
             final IndexVersion indexVersion = (IndexVersion) settings.get(SETTING_INDEX_VERSION_CREATED);
 
-            if (existingShardsAllocator.equals("stateless")
+            if ("stateless".equals(existingShardsAllocator)
                 && fastRefresh == false
                 && value.compareTo(TimeValue.ZERO) > 0
                 && value.compareTo(STATELESS_MIN_NON_FAST_REFRESH_INTERVAL) < 0

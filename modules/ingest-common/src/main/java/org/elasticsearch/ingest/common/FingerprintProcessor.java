@@ -284,7 +284,7 @@ public final class FingerprintProcessor extends AbstractProcessor {
         }
 
         static Hasher getInstance(String method) throws NoSuchAlgorithmException {
-            if (method.equalsIgnoreCase(MurmurHasher.METHOD)) {
+            if (MurmurHasher.METHOD.equalsIgnoreCase(method)) {
                 return MurmurHasher.getInstance(method);
             } else {
                 MessageDigest md = MessageDigest.getInstance(method);
@@ -323,7 +323,7 @@ public final class FingerprintProcessor extends AbstractProcessor {
         }
 
         static Hasher getInstance(String method) throws NoSuchAlgorithmException {
-            if (method.equalsIgnoreCase(METHOD) == false) {
+            if (METHOD.equalsIgnoreCase(method) == false) {
                 throw new NoSuchAlgorithmException("supports only [" + METHOD + "] as method");
             }
             return new MurmurHasher();

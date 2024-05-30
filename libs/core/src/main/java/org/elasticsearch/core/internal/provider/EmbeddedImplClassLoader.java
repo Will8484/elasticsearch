@@ -298,7 +298,7 @@ public final class EmbeddedImplClassLoader extends SecureClassLoader {
         Path[] modulePath = modulePath();
         assert modulePath.length >= 1;
         InMemoryModuleFinder moduleFinder = InMemoryModuleFinder.of(missingModules, modulePath);
-        if (modulePath[0].getFileSystem().provider().getScheme().equals("jar")) {
+        if ("jar".equals(modulePath[0].getFileSystem().provider().getScheme())) {
             modulePath[0].getFileSystem().close();
         }
         return moduleFinder;
@@ -328,9 +328,9 @@ public final class EmbeddedImplClassLoader extends SecureClassLoader {
             .distinct()
             .map(pfx -> path.resolve(pfx))
             .toArray(Path[]::new);
-        if (rootURI.getScheme().equals("file")) {
+        if ("file".equals(rootURI.getScheme())) {
             return entries.apply(Path.of(rootURI));
-        } else if (rootURI.getScheme().equals("jar")) {
+        } else if ("jar".equals(rootURI.getScheme())) {
             FileSystem fileSystem = FileSystems.newFileSystem(rootURI, Map.of(), ClassLoader.getSystemClassLoader());
             Path rootPath = fileSystem.getPath("/");
             return entries.apply(rootPath);
@@ -356,7 +356,7 @@ public final class EmbeddedImplClassLoader extends SecureClassLoader {
     static URI rootURI(URL url) {
         try {
             URI uri = url.toURI();
-            if (uri.getScheme().equals("jar")) {
+            if ("jar".equals(uri.getScheme())) {
                 String s = uri.toString();
                 return URI.create(s.substring(0, s.lastIndexOf("!/")));
             } else {
@@ -453,7 +453,7 @@ public final class EmbeddedImplClassLoader extends SecureClassLoader {
                 try {
                     scan = scanPackages(p, isMultiRelease);
                 } finally {
-                    if (p.getFileSystem().provider().getScheme().equals("jar")) {
+                    if ("jar".equals(p.getFileSystem().provider().getScheme())) {
                         p.getFileSystem().close();
                     }
                 }

@@ -114,7 +114,7 @@ public class TermsShardMinDocCountIT extends ESIntegTestCase {
         final String[] termTypes = { "text", "long", "integer", "float", "double" };
         String termtype = termTypes[randomInt(termTypes.length - 1)];
         String termMappings = "type=" + termtype;
-        if (termtype.equals("text")) {
+        if ("text".equals(termtype)) {
             termMappings += ",fielddata=true";
         }
         assertAcked(prepareCreate(index).setSettings(indexSettings(1, 0)).setMapping("text", termMappings));

@@ -231,7 +231,7 @@ public class InternalDistributionBwcSetupPlugin implements Plugin<Project> {
                     String baseName = name.startsWith("oss-") ? name.substring(4, index) : name.substring(0, index);
                     classifier = "-" + baseName + (name.contains("aarch64") ? "-aarch64" : "-x86_64");
                     extension = name.substring(index + 1);
-                    if (extension.equals("tar")) {
+                    if ("tar".equals(extension)) {
                         extension += ".gz";
                     }
                 } else if (name.contains("deb")) {

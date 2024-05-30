@@ -133,7 +133,7 @@ public abstract class InternalSingleBucketAggregation extends InternalAggregatio
             return this;
         } else {
             String aggName = path.get(0);
-            if (aggName.equals("_count")) {
+            if ("_count".equals(aggName)) {
                 if (path.size() > 1) {
                     throw new IllegalArgumentException("_count must be the last element in the path");
                 }

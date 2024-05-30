@@ -316,7 +316,7 @@ public record MlConfigVersion(int id) implements VersionId<MlConfigVersion>, ToX
         // a result there may be DFA destination indices in the wild with metadata
         // containing 8.10.1, 8.10.2, 8.10.3 or 8.11.0. We can treat these as V_10
         // for config version comparison purposes.
-        if (str.startsWith("8.10.") || str.equals("8.11.0")) {
+        if (str.startsWith("8.10.") || "8.11.0".equals(str)) {
             return V_10;
         }
         Matcher matcher = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)(?:-\\w+)?$").matcher(str);

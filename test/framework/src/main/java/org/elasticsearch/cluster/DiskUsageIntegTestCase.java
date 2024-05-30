@@ -150,7 +150,7 @@ public class DiskUsageIntegTestCase extends ESIntegTestCase {
 
         private static long getTotalFileSize(Path path) throws IOException {
             if (Files.isRegularFile(path)) {
-                if (path.getFileName().toString().equals("nodes")
+                if ("nodes".equals(path.getFileName().toString())
                     && Files.readString(path, StandardCharsets.UTF_8).contains("prevent a downgrade")) {
                     return 0;
                 }
@@ -160,7 +160,7 @@ public class DiskUsageIntegTestCase extends ESIntegTestCase {
                     // probably removed (Windows sometimes throws AccessDeniedException after a file has been deleted)
                     return 0L;
                 }
-            } else if (path.getFileName().toString().equals("_state") || path.getFileName().toString().equals("translog")) {
+            } else if ("_state".equals(path.getFileName().toString()) || "translog".equals(path.getFileName().toString())) {
                 // ignore metadata and translog, since the disk threshold decider only cares about the store size
                 return 0L;
             } else {
@@ -225,7 +225,7 @@ public class DiskUsageIntegTestCase extends ESIntegTestCase {
 
             // We check the total size available for translog in InternalEngine constructor and we allow that here,
             // expecting to match a unique root path.
-            assertTrue(path + " not tracked and not translog", path.getFileName().toString().equals("translog"));
+            assertTrue(path + " not tracked and not translog", "translog".equals(path.getFileName().toString()));
             final Set<Path> containingPaths = trackedPaths.keySet().stream().filter(path::startsWith).collect(Collectors.toSet());
             assertThat(path + " not contained in a unique tracked path", containingPaths, hasSize(1));
             return trackedPaths.get(containingPaths.iterator().next());

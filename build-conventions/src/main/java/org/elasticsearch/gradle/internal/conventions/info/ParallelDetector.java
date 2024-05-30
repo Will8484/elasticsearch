@@ -51,11 +51,11 @@ public class ParallelDetector {
                             String name = parts.get(0);
                             String value = parts.get(1);
                             // the ID of the CPU socket
-                            if (name.equals("physical id")) {
+                            if ("physical id".equals(name)) {
                                 currentID = value;
                             }
                             // Number of cores not including hyper-threading
-                            if (name.equals("cpu cores")) {
+                            if ("cpu cores".equals(name)) {
                                 assert currentID.isEmpty() == false;
                                 socketToCore.put("currentID", Integer.valueOf(value));
                                 currentID = "";

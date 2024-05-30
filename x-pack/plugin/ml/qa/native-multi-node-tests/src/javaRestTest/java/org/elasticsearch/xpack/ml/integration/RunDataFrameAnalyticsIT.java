@@ -123,7 +123,7 @@ public class RunDataFrameAnalyticsIT extends MlNativeDataFrameAnalyticsIntegTest
                 assertThat(resultsObject.containsKey("outlier_score"), is(true));
                 double outlierScore = (double) resultsObject.get("outlier_score");
                 assertThat(outlierScore, allOf(greaterThanOrEqualTo(0.0), lessThanOrEqualTo(1.0)));
-                if (hit.getId().equals("outlier")) {
+                if ("outlier".equals(hit.getId())) {
                     scoreOfOutlier = outlierScore;
                 } else {
                     if (scoreOfNonOutlier < 0) {
@@ -677,7 +677,7 @@ public class RunDataFrameAnalyticsIT extends MlNativeDataFrameAnalyticsIntegTest
             response = startAnalytics(id);
             assertThat(response.getNode(), not(emptyString()));
         } catch (Exception e) {
-            if (e.getMessage().equals("Cannot start because the job has already finished")) {
+            if ("Cannot start because the job has already finished".equals(e.getMessage())) {
                 // That means the job had managed to complete
             } else {
                 throw e;
@@ -768,7 +768,7 @@ public class RunDataFrameAnalyticsIT extends MlNativeDataFrameAnalyticsIntegTest
 
                 double outlierScore = (double) resultsObject.get("outlier_score");
                 assertThat(outlierScore, allOf(greaterThanOrEqualTo(0.0), lessThanOrEqualTo(1.0)));
-                if (hit.getId().equals("outlier")) {
+                if ("outlier".equals(hit.getId())) {
                     scoreOfOutlier = outlierScore;
                 } else {
                     if (scoreOfNonOutlier < 0) {
@@ -876,7 +876,7 @@ public class RunDataFrameAnalyticsIT extends MlNativeDataFrameAnalyticsIntegTest
                 assertThat(resultsObject.containsKey("outlier_score"), is(true));
                 double outlierScore = (double) resultsObject.get("outlier_score");
                 assertThat(outlierScore, allOf(greaterThanOrEqualTo(0.0), lessThanOrEqualTo(1.0)));
-                if (hit.getId().equals("outlier")) {
+                if ("outlier".equals(hit.getId())) {
                     scoreOfOutlier = outlierScore;
 
                     @SuppressWarnings("unchecked")
@@ -982,7 +982,7 @@ public class RunDataFrameAnalyticsIT extends MlNativeDataFrameAnalyticsIntegTest
                 assertThat(resultsObject.containsKey("outlier_score"), is(true));
                 double outlierScore = (double) resultsObject.get("outlier_score");
                 assertThat(outlierScore, allOf(greaterThanOrEqualTo(0.0), lessThanOrEqualTo(1.0)));
-                if (hit.getId().equals("outlier")) {
+                if ("outlier".equals(hit.getId())) {
                     scoreOfOutlier = outlierScore;
 
                     @SuppressWarnings("unchecked")

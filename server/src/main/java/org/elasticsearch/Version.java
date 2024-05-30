@@ -170,7 +170,7 @@ public class Version implements VersionId<Version>, ToXContentFragment {
         for (final Field declaredField : Version.class.getFields()) {
             if (declaredField.getType().equals(Version.class)) {
                 final String fieldName = declaredField.getName();
-                if (fieldName.equals("CURRENT") || fieldName.equals("V_EMPTY")) {
+                if ("CURRENT".equals(fieldName) || "V_EMPTY".equals(fieldName)) {
                     continue;
                 }
                 assert fieldName.matches("V_\\d+_\\d+_\\d+") : "expected Version field [" + fieldName + "] to match V_\\d+_\\d+_\\d+";

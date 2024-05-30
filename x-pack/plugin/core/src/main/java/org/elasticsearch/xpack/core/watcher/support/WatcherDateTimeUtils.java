@@ -194,10 +194,10 @@ public class WatcherDateTimeUtils {
                 millis = (long) (Double.parseDouble(lowerSValue.substring(0, lowerSValue.length() - 1)) * 24 * 60 * 60 * 1000);
             } else if (lowerSValue.endsWith("w")) {
                 millis = (long) (Double.parseDouble(lowerSValue.substring(0, lowerSValue.length() - 1)) * 7 * 24 * 60 * 60 * 1000);
-            } else if (lowerSValue.equals("-1")) {
+            } else if ("-1".equals(lowerSValue)) {
                 // Allow this special value to be unit-less:
                 millis = -1;
-            } else if (lowerSValue.equals("0")) {
+            } else if ("0".equals(lowerSValue)) {
                 // Allow this special value to be unit-less:
                 millis = 0;
             } else {

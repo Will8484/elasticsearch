@@ -396,7 +396,7 @@ public class ScriptContextInfo implements ToXContentObject, Writeable {
             for (java.lang.reflect.Method m : clazz.getMethods()) {
                 if (m.isDefault() == false
                     && m.getName().startsWith("get")
-                    && m.getName().equals("getClass") == false
+                    && "getClass".equals(m.getName()) == false
                     && Modifier.isStatic(m.getModifiers()) == false
                     && m.getParameters().length == 0) {
                     getters.add(new ScriptMethodInfo(m.getName(), m.getReturnType().getTypeName(), new ArrayList<>()));

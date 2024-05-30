@@ -60,7 +60,7 @@ public class GetTransformStatsAction extends ActionType<GetTransformStatsAction.
 
         public Request(String id, @Nullable TimeValue timeout) {
             setTimeout(timeout);
-            if (Strings.isNullOrEmpty(id) || id.equals("*")) {
+            if (Strings.isNullOrEmpty(id) || "*".equals(id)) {
                 this.id = Metadata.ALL;
             } else {
                 this.id = id;

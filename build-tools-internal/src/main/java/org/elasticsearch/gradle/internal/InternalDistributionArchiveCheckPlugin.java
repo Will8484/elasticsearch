@@ -70,7 +70,7 @@ public class InternalDistributionArchiveCheckPlugin implements Plugin<Project> {
         });
 
         String projectName = project.getName();
-        if (projectName.equalsIgnoreCase("integ-test-zip") == false && (projectName.contains("zip") || projectName.contains("tar"))) {
+        if ("integ-test-zip".equalsIgnoreCase(projectName) == false && (projectName.contains("zip") || projectName.contains("tar"))) {
             project.getExtensions()
                 .add(
                     "projectLicenses",

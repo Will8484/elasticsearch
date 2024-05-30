@@ -530,9 +530,9 @@ public class IndexRequest extends ReplicatedWriteRequest<IndexRequest> implement
      */
     public IndexRequest opType(String opType) {
         String op = opType.toLowerCase(Locale.ROOT);
-        if (op.equals("create")) {
+        if ("create".equals(op)) {
             opType(OpType.CREATE);
-        } else if (op.equals("index")) {
+        } else if ("index".equals(op)) {
             opType(OpType.INDEX);
         } else {
             throw new IllegalArgumentException("opType must be 'create' or 'index', found: [" + opType + "]");

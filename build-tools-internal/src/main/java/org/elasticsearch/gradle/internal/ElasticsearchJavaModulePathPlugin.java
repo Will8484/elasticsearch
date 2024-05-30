@@ -207,7 +207,7 @@ public abstract class ElasticsearchJavaModulePathPlugin implements Plugin<Projec
     }
 
     static boolean isIdea() {
-        return System.getProperty("idea.sync.active", "false").equals("true");
+        return "true".equals(System.getProperty("idea.sync.active", "false"));
     }
 
     File findProjectIdPath(String currentBuildPath, Project project, ProjectComponentIdentifier id) {
@@ -220,7 +220,7 @@ public abstract class ElasticsearchJavaModulePathPlugin implements Plugin<Projec
             File includedBuildDir = project.getGradle().includedBuild(buildName).getProjectDir();
             // We have to account for us renaming the :libs projects here
             String[] pathSegments = id.getProjectPath().split(":");
-            if (pathSegments[1].equals("libs")) {
+            if ("libs".equals(pathSegments[1])) {
                 pathSegments[2] = pathSegments[2].replaceFirst("elasticsearch-", "");
             }
 

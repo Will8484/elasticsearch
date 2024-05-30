@@ -489,7 +489,7 @@ public class HierarchyCircuitBreakerService extends CircuitBreakerService {
 
     static OverLimitStrategy createOverLimitStrategy(boolean trackRealMemoryUsage) {
         JvmInfo jvmInfo = JvmInfo.jvmInfo();
-        if (trackRealMemoryUsage && jvmInfo.useG1GC().equals("true")
+        if (trackRealMemoryUsage && "true".equals(jvmInfo.useG1GC())
         // messing with GC is "dangerous" so we apply an escape hatch. Not intended to be used.
             && Booleans.parseBoolean(System.getProperty("es.real_memory_circuit_breaker.g1_over_limit_strategy.enabled"), true)) {
             TimeValue lockTimeout = TimeValue.timeValueMillis(

@@ -118,7 +118,7 @@ public class AggregatorBenchmark {
 
     private static Operator operator(String grouping, String op, String dataType) {
         DriverContext driverContext = driverContext();
-        if (grouping.equals("none")) {
+        if ("none".equals(grouping)) {
             return new AggregationOperator(
                 List.of(supplier(op, dataType, 0).aggregatorFactory(AggregatorMode.SINGLE).apply(driverContext)),
                 driverContext
@@ -181,7 +181,7 @@ public class AggregatorBenchmark {
 
     private static void checkExpected(String grouping, String op, String blockType, String dataType, Page page, int opCount) {
         String prefix = String.format("[%s][%s][%s] ", grouping, op, blockType);
-        if (grouping.equals("none")) {
+        if ("none".equals(grouping)) {
             checkUngrouped(prefix, op, dataType, page, opCount);
             return;
         }
@@ -434,7 +434,7 @@ public class AggregatorBenchmark {
 
     private static Page page(String grouping, String blockType) {
         Block dataBlock = dataBlock(blockType);
-        if (grouping.equals("none")) {
+        if ("none".equals(grouping)) {
             return new Page(dataBlock);
         }
         List<Block> blocks = groupingBlocks(grouping, blockType);

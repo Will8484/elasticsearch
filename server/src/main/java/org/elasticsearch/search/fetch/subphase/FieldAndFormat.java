@@ -68,7 +68,7 @@ public final class FieldAndFormat implements Writeable, ToXContentObject {
                 return null;
             } else {
                 String text = p.text();
-                if (text.equals(USE_DEFAULT_FORMAT)) {
+                if (USE_DEFAULT_FORMAT.equals(text)) {
                     DEPRECATION_LOGGER.compatibleCritical(
                         "explicit_default_format",
                         "["

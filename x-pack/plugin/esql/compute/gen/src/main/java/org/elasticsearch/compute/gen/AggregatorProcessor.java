@@ -118,7 +118,7 @@ public class AggregatorProcessor implements Processor {
             JavaFileObject filerSourceFile = env.getFiler()
                 .createSourceFile(fileName, file.typeSpec.originatingElements.toArray(Element[]::new));
             try (Writer w = filerSourceFile.openWriter()) {
-                if (System.getProperty("line.separator").equals("\n")) {
+                if ("\n".equals(System.getProperty("line.separator"))) {
                     file.writeTo(w);
                 } else {
                     w.write(file.toString().replace("\n", System.getProperty("line.separator")));

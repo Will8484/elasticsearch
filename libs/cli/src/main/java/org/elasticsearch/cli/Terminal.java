@@ -206,8 +206,8 @@ public abstract class Terminal {
                 return defaultYes;
             }
             answer = answer.toLowerCase(Locale.ROOT);
-            boolean answerYes = answer.equals("y");
-            if (answerYes == false && answer.equals("n") == false) {
+            boolean answerYes = "y".equals(answer);
+            if (answerYes == false && "n".equals(answer) == false) {
                 errorPrintln("Did not understand answer '" + answer + "'");
                 continue;
             }

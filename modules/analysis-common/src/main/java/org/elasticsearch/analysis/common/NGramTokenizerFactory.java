@@ -70,7 +70,7 @@ public class NGramTokenizerFactory extends AbstractTokenizerFactory {
             characterClass = characterClass.toLowerCase(Locale.ROOT).trim();
             CharMatcher matcher = MATCHERS.get(characterClass);
             if (matcher == null) {
-                if (characterClass.equals("custom") == false) {
+                if ("custom".equals(characterClass) == false) {
                     throw new IllegalArgumentException(
                         "Unknown token type: '"
                             + characterClass

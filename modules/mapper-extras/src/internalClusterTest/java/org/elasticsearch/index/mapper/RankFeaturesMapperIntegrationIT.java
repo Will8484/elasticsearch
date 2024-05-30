@@ -68,13 +68,13 @@ public class RankFeaturesMapperIntegrationIT extends ESIntegTestCase {
             searchResponse -> {
                 assertThat(searchResponse.getHits().getTotalHits().value, equalTo(3L));
                 for (SearchHit hit : searchResponse.getHits().getHits()) {
-                    if (hit.getId().equals("all")) {
+                    if ("all".equals(hit.getId())) {
                         assertThat(hit.getScore(), equalTo(50f));
                     }
-                    if (hit.getId().equals("lower")) {
+                    if ("lower".equals(hit.getId())) {
                         assertThat(hit.getScore(), equalTo(30f));
                     }
-                    if (hit.getId().equals("higher")) {
+                    if ("higher".equals(hit.getId())) {
                         assertThat(hit.getScore(), equalTo(20f));
                     }
                 }

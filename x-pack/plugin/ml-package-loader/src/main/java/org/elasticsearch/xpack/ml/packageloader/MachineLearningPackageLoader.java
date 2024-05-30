@@ -115,7 +115,7 @@ public class MachineLearningPackageLoader extends Plugin implements ActionPlugin
             );
         }
 
-        if (scheme.equals("file") && (baseUri.getPath().startsWith(normalizedConfigUri.getPath()) == false)) {
+        if ("file".equals(scheme) && (baseUri.getPath().startsWith(normalizedConfigUri.getPath()) == false)) {
             throw new IllegalArgumentException(
                 "If xpack.ml.model_repository is a file location, it must be placed below the configuration: " + normalizedConfigUri
             );

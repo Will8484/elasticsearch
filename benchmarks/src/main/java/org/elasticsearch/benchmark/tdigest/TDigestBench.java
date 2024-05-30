@@ -93,7 +93,7 @@ public class TDigestBench {
         random = ThreadLocalRandom.current();
         tdigest = tdigestFactory.create(compression);
 
-        Supplier<Double> nextRandom = () -> distribution.equals("GAUSSIAN") ? random.nextGaussian() : random.nextDouble();
+        Supplier<Double> nextRandom = () -> "GAUSSIAN".equals(distribution) ? random.nextGaussian() : random.nextDouble();
         for (int i = 0; i < 10000; ++i) {
             tdigest.add(nextRandom.get());
         }

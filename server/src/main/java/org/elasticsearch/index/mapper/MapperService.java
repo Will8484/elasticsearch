@@ -468,7 +468,7 @@ public class MapperService extends AbstractIndexComponent implements Closeable {
                 // field mapping entries of Map type (like "fields" and "meta") are handled above and should never reach here
                 return null;
             } else {
-                if (key.equals("required")) {
+                if ("required".equals(key)) {
                     // we look for explicit `_routing.required` settings because we use them to detect contradictions of this setting
                     // that comes from mappings with such that comes from the optional `data_stream` configuration of composable index
                     // templates
@@ -677,7 +677,7 @@ public class MapperService extends AbstractIndexComponent implements Closeable {
             return true;
         }
         // if a node had Size Plugin installed, _size field should also be considered a meta-field
-        return fieldName.equals("_size");
+        return "_size".equals(fieldName);
     }
 
     /**

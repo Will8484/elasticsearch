@@ -112,7 +112,7 @@ public class AggConstructionContentionBenchmark {
             case "noop" -> new NoneCircuitBreakerService();
             default -> throw new UnsupportedOperationException();
         };
-        preallocateBreaker = breaker.equals("preallocate");
+        preallocateBreaker = "preallocate".equals(breaker);
         bigArrays = new BigArrays(recycler, breakerService, "request");
     }
 

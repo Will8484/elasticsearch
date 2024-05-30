@@ -298,7 +298,7 @@ public class PutIndexTemplateRequest extends MasterNodeRequest<PutIndexTemplateR
         Map<String, Object> source = templateSource;
         for (Map.Entry<String, Object> entry : source.entrySet()) {
             String name = entry.getKey();
-            if (name.equals("index_patterns")) {
+            if ("index_patterns".equals(name)) {
                 if (entry.getValue() instanceof String) {
                     patterns(Collections.singletonList((String) entry.getValue()));
                 } else if (entry.getValue() instanceof List) {
@@ -307,19 +307,19 @@ public class PutIndexTemplateRequest extends MasterNodeRequest<PutIndexTemplateR
                 } else {
                     throw new IllegalArgumentException("Malformed [index_patterns] value, should be a string or a list of strings");
                 }
-            } else if (name.equals("order")) {
+            } else if ("order".equals(name)) {
                 order(XContentMapValues.nodeIntegerValue(entry.getValue(), order()));
             } else if ("version".equals(name)) {
                 if ((entry.getValue() instanceof Integer) == false) {
                     throw new IllegalArgumentException("Malformed [version] value, should be an integer");
                 }
                 version((Integer) entry.getValue());
-            } else if (name.equals("settings")) {
+            } else if ("settings".equals(name)) {
                 if ((entry.getValue() instanceof Map) == false) {
                     throw new IllegalArgumentException("Malformed [settings] section, should include an inner object");
                 }
                 settings((Map<String, Object>) entry.getValue());
-            } else if (name.equals("mappings")) {
+            } else if ("mappings".equals(name)) {
                 Map<String, Object> mappings = (Map<String, Object>) entry.getValue();
                 for (Map.Entry<String, Object> entry1 : mappings.entrySet()) {
                     if ((entry1.getValue() instanceof Map) == false) {
@@ -331,7 +331,7 @@ public class PutIndexTemplateRequest extends MasterNodeRequest<PutIndexTemplateR
                     }
                     mapping((Map<String, Object>) entry1.getValue());
                 }
-            } else if (name.equals("aliases")) {
+            } else if ("aliases".equals(name)) {
                 aliases((Map<String, Object>) entry.getValue());
             } else {
                 throw new ElasticsearchParseException("unknown key [{}] in the template ", name);

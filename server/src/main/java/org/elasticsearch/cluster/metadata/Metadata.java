@@ -2244,7 +2244,7 @@ public class Metadata implements Iterable<IndexMetadata>, Diffable<Metadata>, Ch
         }
 
         public Builder generateClusterUuidIfNeeded() {
-            if (clusterUUID.equals(UNKNOWN_CLUSTER_UUID)) {
+            if (UNKNOWN_CLUSTER_UUID.equals(clusterUUID)) {
                 clusterUUID = UUIDs.randomBase64UUID();
             }
             return this;

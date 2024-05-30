@@ -344,7 +344,7 @@ public record TransformConfigVersion(int id) implements VersionId<TransformConfi
         if (str == null) {
             return CURRENT;
         }
-        if (str.equals("8.10.0")) {
+        if ("8.10.0".equals(str)) {
             return V_10;
         }
         Matcher matcher = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)(?:-\\w+)?$").matcher(str);

@@ -60,7 +60,7 @@ public class PlainHighlighter implements Highlighter {
         FetchSubPhase.HitContext hitContext = fieldContext.hitContext;
         MappedFieldType fieldType = fieldContext.fieldType;
 
-        Encoder encoder = field.fieldOptions().encoder().equals("html") ? HighlightUtils.Encoders.HTML : HighlightUtils.Encoders.DEFAULT;
+        Encoder encoder = "html".equals(field.fieldOptions().encoder()) ? HighlightUtils.Encoders.HTML : HighlightUtils.Encoders.DEFAULT;
 
         if (fieldContext.cache.containsKey(CACHE_KEY) == false) {
             fieldContext.cache.put(CACHE_KEY, new HashMap<>());

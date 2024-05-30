@@ -235,7 +235,7 @@ public class MetadataCreateIndexService {
         if (byteCount > MAX_INDEX_NAME_BYTES) {
             throw exceptionCtor.apply(index, "index name is too long, (" + byteCount + " > " + MAX_INDEX_NAME_BYTES + ")");
         }
-        if (index.equals(".") || index.equals("..")) {
+        if (".".equals(index) || "..".equals(index)) {
             throw exceptionCtor.apply(index, "must not be '.' or '..'");
         }
     }
@@ -1572,7 +1572,7 @@ public class MetadataCreateIndexService {
             final Predicate<String> sourceSettingsPredicate = (s) -> (s.startsWith("index.similarity.")
                 || s.startsWith("index.analysis.")
                 || s.startsWith("index.sort.")
-                || s.equals("index.soft_deletes.enabled")) && indexSettingsBuilder.keys().contains(s) == false;
+                || "index.soft_deletes.enabled".equals(s)) && indexSettingsBuilder.keys().contains(s) == false;
             builder.put(sourceMetadata.getSettings().filter(sourceSettingsPredicate));
         }
 

@@ -211,16 +211,16 @@ public class SnapshotStats implements Writeable, ToXContentObject {
             XContentParserUtils.ensureExpectedToken(XContentParser.Token.FIELD_NAME, token, parser);
             String currentName = parser.currentName();
             token = parser.nextToken();
-            if (currentName.equals(Fields.INCREMENTAL)) {
+            if (Fields.INCREMENTAL.equals(currentName)) {
                 XContentParserUtils.ensureExpectedToken(XContentParser.Token.START_OBJECT, token, parser);
                 while ((token = parser.nextToken()) != XContentParser.Token.END_OBJECT) {
                     XContentParserUtils.ensureExpectedToken(XContentParser.Token.FIELD_NAME, token, parser);
                     String innerName = parser.currentName();
                     token = parser.nextToken();
-                    if (innerName.equals(Fields.FILE_COUNT)) {
+                    if (Fields.FILE_COUNT.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         incrementalFileCount = parser.intValue();
-                    } else if (innerName.equals(Fields.SIZE_IN_BYTES)) {
+                    } else if (Fields.SIZE_IN_BYTES.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         incrementalSize = parser.longValue();
                     } else {
@@ -230,16 +230,16 @@ public class SnapshotStats implements Writeable, ToXContentObject {
                         }
                     }
                 }
-            } else if (currentName.equals(Fields.PROCESSED)) {
+            } else if (Fields.PROCESSED.equals(currentName)) {
                 XContentParserUtils.ensureExpectedToken(XContentParser.Token.START_OBJECT, token, parser);
                 while ((token = parser.nextToken()) != XContentParser.Token.END_OBJECT) {
                     XContentParserUtils.ensureExpectedToken(XContentParser.Token.FIELD_NAME, token, parser);
                     String innerName = parser.currentName();
                     token = parser.nextToken();
-                    if (innerName.equals(Fields.FILE_COUNT)) {
+                    if (Fields.FILE_COUNT.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         processedFileCount = parser.intValue();
-                    } else if (innerName.equals(Fields.SIZE_IN_BYTES)) {
+                    } else if (Fields.SIZE_IN_BYTES.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         processedSize = parser.longValue();
                     } else {
@@ -249,16 +249,16 @@ public class SnapshotStats implements Writeable, ToXContentObject {
                         }
                     }
                 }
-            } else if (currentName.equals(Fields.TOTAL)) {
+            } else if (Fields.TOTAL.equals(currentName)) {
                 XContentParserUtils.ensureExpectedToken(XContentParser.Token.START_OBJECT, token, parser);
                 while ((token = parser.nextToken()) != XContentParser.Token.END_OBJECT) {
                     XContentParserUtils.ensureExpectedToken(XContentParser.Token.FIELD_NAME, token, parser);
                     String innerName = parser.currentName();
                     token = parser.nextToken();
-                    if (innerName.equals(Fields.FILE_COUNT)) {
+                    if (Fields.FILE_COUNT.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         totalFileCount = parser.intValue();
-                    } else if (innerName.equals(Fields.SIZE_IN_BYTES)) {
+                    } else if (Fields.SIZE_IN_BYTES.equals(innerName)) {
                         XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                         totalSize = parser.longValue();
                     } else {
@@ -268,10 +268,10 @@ public class SnapshotStats implements Writeable, ToXContentObject {
                         }
                     }
                 }
-            } else if (currentName.equals(Fields.START_TIME_IN_MILLIS)) {
+            } else if (Fields.START_TIME_IN_MILLIS.equals(currentName)) {
                 XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                 startTime = parser.longValue();
-            } else if (currentName.equals(Fields.TIME_IN_MILLIS)) {
+            } else if (Fields.TIME_IN_MILLIS.equals(currentName)) {
                 XContentParserUtils.ensureExpectedToken(XContentParser.Token.VALUE_NUMBER, token, parser);
                 time = parser.longValue();
             } else {

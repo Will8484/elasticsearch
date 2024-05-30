@@ -329,7 +329,7 @@ public class RestTable {
         if (textAlign == null) {
             textAlign = "left";
         }
-        if (leftOver > 0 && textAlign.equals("right")) {
+        if (leftOver > 0 && "right".equals(textAlign)) {
             for (byte i = 0; i < leftOver; i++) {
                 out.append(" ");
             }

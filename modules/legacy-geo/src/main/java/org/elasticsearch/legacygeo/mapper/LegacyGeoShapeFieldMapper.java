@@ -297,17 +297,17 @@ public class LegacyGeoShapeFieldMapper extends AbstractShapeGeometryFieldMapper<
 
         private static void setupPrefixTrees(GeoShapeFieldType ft) {
             SpatialPrefixTree prefixTree;
-            if (ft.tree().equals(PrefixTrees.GEOHASH)) {
+            if (PrefixTrees.GEOHASH.equals(ft.tree())) {
                 prefixTree = new GeohashPrefixTree(
                     ShapeBuilder.SPATIAL_CONTEXT,
                     getLevels(ft.treeLevels(), ft.precisionInMeters(), Defaults.GEOHASH_TREE_LEVELS, true)
                 );
-            } else if (ft.tree().equals(PrefixTrees.LEGACY_QUADTREE)) {
+            } else if (PrefixTrees.LEGACY_QUADTREE.equals(ft.tree())) {
                 prefixTree = new QuadPrefixTree(
                     ShapeBuilder.SPATIAL_CONTEXT,
                     getLevels(ft.treeLevels(), ft.precisionInMeters(), Defaults.QUADTREE_LEVELS, false)
                 );
-            } else if (ft.tree().equals(PrefixTrees.QUADTREE)) {
+            } else if (PrefixTrees.QUADTREE.equals(ft.tree())) {
                 prefixTree = new PackedQuadPrefixTree(
                     ShapeBuilder.SPATIAL_CONTEXT,
                     getLevels(ft.treeLevels(), ft.precisionInMeters(), Defaults.QUADTREE_LEVELS, false)

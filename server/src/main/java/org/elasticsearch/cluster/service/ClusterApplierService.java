@@ -370,7 +370,7 @@ public class ClusterApplierService extends AbstractLifecycleComponent implements
                 if (className.equals(ClusterStateObserver.class.getName())) {
                     // it's legitimate to start a ClusterStateObserver on the applier thread, since this class handles lost updates
                     return true;
-                } else if (className.equals(ClusterApplierService.class.getName()) && methodName.equals("callClusterStateAppliers")) {
+                } else if (className.equals(ClusterApplierService.class.getName()) && "callClusterStateAppliers".equals(methodName)) {
                     throw new AssertionError("""
                         On the cluster applier thread you must use ClusterChangedEvent#state() and ClusterChangedEvent#previousState() \
                         instead of ClusterApplierService#state(). It is almost certainly a bug to read the latest-applied state from \

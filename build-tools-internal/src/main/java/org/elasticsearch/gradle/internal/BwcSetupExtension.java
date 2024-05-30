@@ -117,9 +117,9 @@ public class BwcSetupExtension {
             }
             final String showStacktraceName = project.getGradle().getStartParameter().getShowStacktrace().name();
             assert Arrays.asList("INTERNAL_EXCEPTIONS", "ALWAYS", "ALWAYS_FULL").contains(showStacktraceName);
-            if (showStacktraceName.equals("ALWAYS")) {
+            if ("ALWAYS".equals(showStacktraceName)) {
                 loggedExec.args("--stacktrace");
-            } else if (showStacktraceName.equals("ALWAYS_FULL")) {
+            } else if ("ALWAYS_FULL".equals(showStacktraceName)) {
                 loggedExec.args("--full-stacktrace");
             }
             if (project.getGradle().getStartParameter().isParallelProjectExecutionEnabled()) {

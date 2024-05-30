@@ -57,7 +57,7 @@ public final class UnassignedInfo implements ToXContentFragment, Writeable {
 
     public static final Setting<TimeValue> INDEX_DELAYED_NODE_LEFT_TIMEOUT_SETTING = Setting.timeSetting(
         "index.unassigned.node_left.delayed_timeout",
-        settings -> EXISTING_SHARDS_ALLOCATOR_SETTING.get(settings).equals("stateless")
+        settings -> "stateless".equals(EXISTING_SHARDS_ALLOCATOR_SETTING.get(settings))
             ? TimeValue.timeValueSeconds(10)
             : TimeValue.timeValueMinutes(1),
         TimeValue.timeValueMillis(0),

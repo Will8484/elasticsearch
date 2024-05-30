@@ -163,14 +163,14 @@ public class Grant implements Writeable {
     public ActionRequestValidationException validate(ActionRequestValidationException validationException) {
         if (type == null) {
             validationException = addValidationError("[grant_type] is required", validationException);
-        } else if (type.equals(PASSWORD_GRANT_TYPE)) {
+        } else if (PASSWORD_GRANT_TYPE.equals(type)) {
             validationException = validateRequiredField("username", username, validationException);
             validationException = validateRequiredField("password", password, validationException);
             validationException = validateUnsupportedField("access_token", accessToken, validationException);
             if (clientAuthentication != null) {
                 return addValidationError("[client_authentication] is not supported for grant_type [" + type + "]", validationException);
             }
-        } else if (type.equals(ACCESS_TOKEN_GRANT_TYPE)) {
+        } else if (ACCESS_TOKEN_GRANT_TYPE.equals(type)) {
             validationException = validateRequiredField("access_token", accessToken, validationException);
             validationException = validateUnsupportedField("username", username, validationException);
             validationException = validateUnsupportedField("password", password, validationException);
