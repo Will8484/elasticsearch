@@ -7,6 +7,7 @@
 
 package org.elasticsearch.xpack.ml.aggs.categorization;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,7 +91,7 @@ public class CategorizationPartOfSpeechDictionary {
         int maxLength = 0;
         BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
         String line;
-        while ((line = reader.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
             line = line.trim();
             if (line.isEmpty()) {
                 continue;
